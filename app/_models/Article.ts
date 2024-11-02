@@ -1,20 +1,26 @@
-import { model, models, Schema } from "mongoose";
+import { model, Schema } from "mongoose";
+import {IArticle, IArticleDocument, IArticleModel} from "../_types/Article";
 
-const ArticleSchema = new Schema(
+const ArticleSchema: Schema<IArticleDocument> = new Schema(
   {
-    name: String,
-    englishName: String,
-    link: String,
-    date: String,
-    company: String,
-    type: String,
-    originLang: String,
-    language: String,
-    tags: String, //TODO change to array
-    summary: String,
-  }
+    name: { type: String, required: true },
+    englishName: { type: String, required: true },
+    link: { type: String, required: true },
+    date: { type: Date, required: true },
+    company: { type: String, required: true },
+    type: { type: String, required: true },
+    originLang: { type: String, required: true },
+    language: { type: String, required: true },
+    tags: [{ type: String, required: true }],
+    summary: { type: String, required: true },
+  },
+  { timestamps: true }
 );
 
-const Article = models?.Article || model("Article", ArticleSchema);
+ArticleSchema.statics.buildArticle = (args: IArticle) => {
+  return new Article(args)
+}
+
+const Article = model<IArticleDocument, IArticleModel>("articles", ArticleSchema);
 
 export default Article;
