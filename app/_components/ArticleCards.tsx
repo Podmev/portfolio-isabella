@@ -1,9 +1,9 @@
 import React, { FC } from "react";
-import { IArticle } from "../_types/Article";
+import { IArticleDocument } from "../_types/Article";
 import ArticleCard from "./ArticleCard";
 
 export interface ArticleCardsProps {
-  articles: IArticle[];
+  articles: IArticleDocument[];
 }
 
 const ArticleCards: FC<ArticleCardsProps> = ({ articles }) => {

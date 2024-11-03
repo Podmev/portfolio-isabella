@@ -1,13 +1,16 @@
 import { FC } from "react";
-import { IArticle } from "../_types/Article";
+import { IArticleDocument } from "../_types/Article";
+import Link from "next/link";
 
 export interface ArticleCardProps {
-  article: IArticle;
+  article: IArticleDocument;
 }
 const ArticleCard: FC<ArticleCardProps> = ({ article }) => {
   return (
     <div>
-      <h3>{article.name}</h3>
+      <h3>
+        <Link href={`/articles/${article._id}`}>{article.name}</Link>
+      </h3>
     </div>
   );
 };

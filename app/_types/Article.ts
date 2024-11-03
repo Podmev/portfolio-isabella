@@ -1,4 +1,4 @@
-import { Document, Model} from "mongoose";
+import { Document, Model, ObjectId} from "mongoose";
 
 // todo add id
 export interface IArticle{
