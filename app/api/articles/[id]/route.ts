@@ -7,15 +7,11 @@ export async function GET(
   req: NextRequest,
   { params }: { params: { id: string } }
 ) {
-  console.log("get article by id");
   await initMongoose();
-  console.log(params.id);
-  // if (!mongoose.Types.ObjectId.isValid(params.id))
-  //   return NextResponse.json(
-  //     { msg: `No article with id :${params.id}` },
-  //     { status: 404 }
-  //   );
-  const a = await Article.findById(params.id).exec();
-  console.log(a);
+  if (!mongoose.Types.ObjectId.isValid(params.id))
+    return NextResponse.json(
+      { msg: `No article with id: ${params.id}` },
+      { status: 404 }
+    );
   return NextResponse.json(await Article.findById(params.id).exec());
 }
