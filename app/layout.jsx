@@ -1,12 +1,11 @@
 import Logo from "./_components/Logo";
 import Navigation from "./_components/Navigation";
-import LayoutProps from "./_types/LayoutProps";
 
 export const metadata = {
   title: "Portfolio: Isabella",
 };
 
-export default function RootLayout({ children }: LayoutProps) {
+export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
