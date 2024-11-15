@@ -1,13 +1,17 @@
 import Link from "next/link";
 
-function articleCard({ article }) {
+async function ArticleCard({ article}) {
   return (
     <div>
       <h3>
-        <Link href={`/articles/${article._id}`}>{article.name}</Link>
+        <Link
+          href={`/articles/${article._id}`}
+        >
+          {article.name}
+        </Link>
       </h3>
     </div>
   );
-};
+}
 
-export default articleCard;
+export default ArticleCard;

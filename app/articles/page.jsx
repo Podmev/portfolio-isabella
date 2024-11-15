@@ -1,12 +1,12 @@
-import ArticleCards from "../_components/ArticleCards";
+import ArticleCardList from "../_components/ArticleCardList";
 import axiosWithUrl from "../_lib/axiosWithUrl";
 
-export default async function Page(){
-    const data = await axiosWithUrl.get("/api/articles")
-    const articles = await data.data;
+export default async function Page({ searchParams }){
+    // const data = await axiosWithUrl.get("/api/articles")
+    // const articles = await data.data;
     return <div>
         <h1>Articles page</h1>
-        <ArticleCards articles={articles}/>
+        <ArticleCardList searchParams={searchParams}/>
     </div>
 
 }

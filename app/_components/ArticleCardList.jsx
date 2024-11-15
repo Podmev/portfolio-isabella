@@ -1,7 +1,9 @@
 import React from "react";
 import ArticleCard from "./ArticleCard";
+import { getArticles } from "../_lib/data-service";
 
-function articlesCards({ articles }){
+async function ArticlesCardList({ searchParams }){
+  const articles = await getArticles(searchParams);
   return (
     <div>
       <ul>
@@ -13,4 +15,4 @@ function articlesCards({ articles }){
   );
 };
 
-export default articlesCards;
+export default ArticlesCardList;

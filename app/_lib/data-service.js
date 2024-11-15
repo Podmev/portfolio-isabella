@@ -1,3 +1,4 @@
+import axiosWithUrl from "./axiosWithUrl";
 
 // Guests are uniquely identified by their email address
 export async function getGuest(email) {
@@ -10,7 +11,6 @@ export async function getGuest(email) {
   // No error here! We handle the possibility of no guest in the sign in callback
   return data;
 }
-
 
 /////////////
 // CREATE
@@ -28,7 +28,9 @@ export async function createGuest(newGuest) {
 
 export async function getCountries() {
   try {
-    const res = await fetch("https://countriesnow.space/api/v0.1/countries/flag/images");
+    const res = await fetch(
+      "https://countriesnow.space/api/v0.1/countries/flag/images"
+    );
     const data = await res.json();
     const countries = data.data.map((el) => {
       return { name: el.name, flag: el.flag };
@@ -38,3 +40,29 @@ export async function getCountries() {
     throw new Error("Could not fetch countries");
   }
 }
+
+export const getArticles = async function (searchParams) {
+  const config = { params: searchParams };
+  const { data, error } = await axiosWithUrl.get("/api/articles", config);
+
+  if (error) {
+    console.error(error);
+    throw new Error("Articles could not be loaded");
+  }
+
+  const articles = await data.data.articles;
+  return articles;
+};
+
+export const getArticle = async function (id) {
+  const { data, error } = await axiosWithUrl.get(`/api/articles/${id}`);
+
+  if (error) {
+    console.error(error);
+    throw new Error("Article could not be loaded");
+  }
+
+  const article = await data.data.article;
+  return article;
+};
+
