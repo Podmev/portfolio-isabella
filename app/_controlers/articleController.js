@@ -1,4 +1,4 @@
-import Article from "../_models/Article";
+import articleModel from "../_models/articleModel";
 import {
   getAll,
   getOne,
@@ -7,8 +7,8 @@ import {
   updateOne,
 } from "./handlerFactory";
 
-export const getAllArticles = getAll(Article);
-export const getArticle = getOne(Article);
-export const createArticle = createOne(Article);
-export const deleteArticle = deleteOne(Article);
-export const updateArticle = updateOne(Article);
+export const getAllArticles = getAll(articleModel);
+export const getArticle = getOne(articleModel);
+export const createArticle = createOne(articleModel);
+export const deleteArticle = deleteOne(articleModel);
+export const updateArticle = updateOne(articleModel);

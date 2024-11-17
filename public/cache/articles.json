@@ -1,6 +1,6 @@
 [
   {
-    "_id": { "$oid": "67279647820d3e5f169a3d02" },
+    "_id": "67279647820d3e5f169a3d02",
     "name": "Rede De Publicidade: 11 Melhores Redes De Publicidade Para Experimentar",
     "englishName": "Advertising Network: 11 Best Advertising Networks to Try",
     "link": "https://adsterra.com/blog/br/rede-de-publicidade/",
@@ -20,7 +20,7 @@
     "summary": "Ad networks link advertisers with publishers, enabling site monetization through formats like banners, videos, and push notifications. Adsterra offers high CPM, API access, multiple payment options, advanced targeting, and robust security, catering to both new and experienced developers."
   },
   {
-    "_id": { "$oid": "67279675e6fd498276fdbaac" },
+    "_id": "67279675e6fd498276fdbaac",
     "name": "Rede de Display: Tudo sobre Anunciar e Campanhas Eficazes",
     "englishName": "Display Network: All About Advertising and Effective Campaigns",
     "link": "https://adsterra.com/blog/br/rede-de-display/",
@@ -39,7 +39,7 @@
     "summary": "Display networks allow advertisers to showcase visual ads, such as banners and videos, across websites and apps to engage broader audiences. Adsterra excels in this field, offering advanced targeting, multiple ad formats, and a partner care program, making it ideal for developers aiming to optimize ad campaigns and maximize ROI."
   },
   {
-    "_id": { "$oid": "6727968958df14bc98bcb045" },
+    "_id": "6727968958df14bc98bcb045",
     "name": "Maiores Concorrentes Do AdSense: 20 Melhores Alternativas AdSense",
     "englishName": "Top AdSense Competitors: 20 Best AdSense Alternatives",
     "link": "https://adsterra.com/blog/br/alternativas-ao-adsense/",
@@ -52,7 +52,7 @@
     "summary": "This article presents 20 top alternatives to Google AdSense, focusing on platforms like Adsterra, known for quick approval, high security, and diverse ad formats. Each alternative offers unique advantages, such as better payment options, customizable ads, and reduced entry barriers, catering to publishers seeking more flexibility and higher monetization potential than AdSense."
   },
   {
-    "_id": { "$oid": "6727969102d7f552688c1c3f" },
+    "_id": "6727969102d7f552688c1c3f",
     "name": "Como monetizar um site: 11 métodos de monetização em detalhes",
     "englishName": "How to Monetize a Website: 11 Monetization Methods in Detail",
     "link": "https://adsterra.com/blog/br/como-monetizar-um-site/",
@@ -76,7 +76,7 @@
     "summary": "This article explores 11 effective ways to monetize a website, including ad networks, affiliate marketing, paid memberships, sponsored content, and online courses. It emphasizes the importance of generating traffic to ensure profitability and highlights Adsterra's diverse ad formats, such as Popunder and Social Bar, as powerful tools for sustainable monetization."
   },
   {
-    "_id": { "$oid": "6727969b415abef46b8c7977" },
+    "_id": "6727969b415abef46b8c7977",
     "name": "Como Ganhar Dinheiro no Wordpress: 7 Formas de Sucesso",
     "englishName": "How to Make Money on WordPress: 7 Successful Ways",
     "link": "https://adsterra.com/blog/br/wordpress-como-ganhar-dinheiro/",
@@ -98,7 +98,7 @@
     "summary": "This article outlines seven ways to make money using WordPress, including placing ads, affiliate marketing, selling themes and plugins, offering subscriptions, and promoting sponsored content. It emphasizes platforms like Adsterra for seamless ad integration, enabling WordPress users to monetize their sites efficiently through various ad formats and generate sustainable income."
   },
   {
-    "_id": { "$oid": "672796a3f3f8971bb710ae16" },
+    "_id": "672796a3f3f8971bb710ae16",
     "name": "Push Ads: Explorando Estratégias e Benefícios",
     "englishName": "Push Ads: Exploring Strategies and Benefits",
     "link": "https://adsterra.com/blog/br/push-ads/",
@@ -111,7 +111,7 @@
     "summary": "This article explores Push Ads, a powerful ad format delivering short, clickable notifications to engage users directly via web and mobile. It highlights the advantages of using Adsterra’s In-Page Push Ads, offering high conversion potential, advanced targeting, and seamless delivery without requiring user permission, making it an effective tool for boosting marketing campaigns."
   },
   {
-    "_id": { "$oid": "672796abc93425bbf23a929b" },
+    "_id": "672796abc93425bbf23a929b",
     "name": "Como Monetizar Um Blog: 8 Dicas Para Lucros Sustentáveis",
     "englishName": "How to Monetize a Blog: 8 Tips for Sustainable Profits",
     "link": "https://adsterra.com/blog/br/como-monetizar-um-blog/",
@@ -133,7 +133,7 @@
     "summary": "This article provides eight sustainable strategies to monetize a blog, such as using ad networks, affiliate marketing, sponsored posts, and selling products or services. It highlights platforms like Adsterra, known for its high CPM rates and multiple ad formats, helping bloggers generate income efficiently with both small and large audiences."
   },
   {
-    "_id": { "$oid": "672796b5b3b6e59930c07449" },
+    "_id": "672796b5b3b6e59930c07449",
     "name": "Como ganhar dinheiro como afiliado: roteiro de sucesso",
     "englishName": "How to Make Money as an Affiliate: A Roadmap to Success",
     "link": "https://adsterra.com/blog/br/como-ganhar-dinheiro-como-afiliado/",
@@ -155,7 +155,7 @@
     "summary": "This guide outlines key steps for affiliate marketing success, including choosing a niche, building an audience, and promoting links via websites or social media. It highlights using platforms like Adsterra for traffic, optimizing with CPC, CPA, and CPM models, and tracking performance—allowing beginners to start easily with minimal infrastructure."
   },
   {
-    "_id": { "$oid": "672796bd7c4a197c4288a82b" },
+    "_id": "672796bd7c4a197c4288a82b",
     "name": "Como monetizar o Facebook: Novas maneiras de lucrar com o tráfego do FB",
     "englishName": "How to Monetize Facebook: New Ways to Profit from FB Traffic",
     "link": "https://adsterra.com/blog/br/como-ganhar-dinheiro-no-facebook/",
@@ -178,7 +178,7 @@
     "summary": "This guide on affiliate marketing outlines how to get started and earn profits by promoting products through links on blogs, social media, or paid ads. It emphasizes using platforms like Adsterra to drive qualified traffic, optimize campaigns with CPC, CPA, and CPM models, and track performance, enabling beginners to succeed without complex infrastructure."
   },
   {
-    "_id": { "$oid": "672796c4be767c0dd7532576" },
+    "_id": "672796c4be767c0dd7532576",
     "name": "Marketing CRO — o que é?",
     "englishName": "CRO Marketing — What Is It?",
     "link": "https://adsterra.com/blog/br/o-que-e-cro/",

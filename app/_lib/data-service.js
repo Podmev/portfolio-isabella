@@ -43,7 +43,7 @@ export async function getCountries() {
 
 export const getArticles = async function (searchParams) {
   const config = { params: searchParams };
-  const { data, error } = await axiosWithUrl.get("/api/articles", config);
+  const { data, error } = await axiosWithUrl.get("/api/v1/articles", config);
 
   if (error) {
     console.error(error);
@@ -55,7 +55,7 @@ export const getArticles = async function (searchParams) {
 };
 
 export const getArticle = async function (id) {
-  const { data, error } = await axiosWithUrl.get(`/api/articles/${id}`);
+  const { data, error } = await axiosWithUrl.get(`/api/v1/articles/${id}`);
 
   if (error) {
     console.error(error);
