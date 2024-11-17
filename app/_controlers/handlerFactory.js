@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import APIFeatures from "../_utils/apiFeatures";
 import AppError from "../_utils/appError";
 import catchAsync from "../_utils/catchAsync";
+import mongoose from "mongoose";
 
 export function deleteOne(Model) {
   catchAsync(async (req, res, next) => {
@@ -60,12 +61,21 @@ export function createOne(Model) {
 
 export function getOne(Model, populateOptions) {
   return async (req, params) => {
-    let query = Model.findById(params.id);
-    if (populateOptions) query = query.populate(populateOptions);
-    const doc = await query;
+    const id = params.id;
+    let doc;
 
+    if (mongoose.isValidObjectId(id)) {
+      let query = Model.findById(params.id);
+      if (populateOptions) query = query.populate(populateOptions);
+      doc = await query;
+    } else {
+      // this id isn't object id for mongo
+      // trying with id as slug
+      let query = Model.findOne({ slug: params.id });
+      if (populateOptions) query = query.populate(populateOptions);
+      doc = await query;
+    }
     const docName = Model.modelName.toLowerCase();
-
     if (!doc) {
       return next(new AppError(`No ${docName} found with that ID`, 404));
     }
