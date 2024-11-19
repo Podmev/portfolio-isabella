@@ -207,5 +207,41 @@
       "strategies"
     ],
     "summary": "This guide explains CRO (Conversion Rate Optimization), focusing on strategies to enhance website performance and increase conversions. It covers key methods like A/B testing, heatmaps, funnel analysis, and the use of personalized elements, emphasizing that platforms like Adsterra offer tools to optimize campaigns through CPA Goal, Smart CPM, and Custom Bid, maximizing ROI and minimizing ad spend."
+  },
+  {
+    "_id": "673cd28b6b76a4695d2bc8a4",
+    "name": "What You Need to Know About Sanur, Bali",
+    "englishName": "What You Need to Know About Sanur, Bali",
+    "link": "https://www.mynewsdesk.com/on-bali/blog_posts/what-you-need-to-know-about-sanur-bali-120447",
+    "image": "https://mnd-assets.mynewsdesk.com/image/upload/ar_16:9,c_fill,dpr_auto,f_auto,g_xy_center,q_auto:good,w_1782,x_650,y_363/oircdgfzw3dcr8rqbr3hnd",
+    "date": "2024-11-13T00:00:00.000Z",
+    "company": "OnBali",
+    "type": "Copy",
+    "originLang": "EN",
+    "language": "EN",
+    "tags": [
+      "travel",
+      "Bali",
+      "Sanur"
+    ],
+    "summary": "Sanur, located on Bali’s southeastern coast, offers a peaceful retreat with calm beaches, water sports, and cultural attractions like the Sanur Village Festival and Pura Blanjong Temple. Ideal for relaxation, it has a variety of accommodation options, wellness retreats, and a laid-back nightlife, making it perfect for a tranquil getaway."
+  },
+  {
+    "_id": "673cd48d6b330430b1c81444",
+    "name": "Diferença entre WhatsApp e WhatsApp Business",
+    "englishName": "Difference Between WhatsApp and WhatsApp Business",
+    "link": "https://www.kommo.com/br/blog/diferenca-entre-whatsapp-e-whatsapp-business/",
+    "image": null,
+    "date": "2024-11-13T00:00:00.000Z",
+    "company": "Kommo",
+    "type": "Translation",
+    "originLang": "EN",
+    "language": "PT",
+    "tags": [
+      "WhatsApp",
+      "Business",
+      "CRM"
+    ],
+    "summary": "WhatsApp is a popular messaging app used by billions, while WhatsApp Business is an enhanced version designed for businesses, offering features like a business profile, product catalog, and message automation. The main difference between the two is that WhatsApp Business is geared toward improving customer communication and online presence for small businesses, while the WhatsApp Business API is a paid solution for medium to large businesses, with additional features like chatbot automation and CRM integration."
   }
 ]
