@@ -1,10 +1,10 @@
 [
     {
         "_id": "673cc63102e38d206fb0612",
-        "name": "https://example.com",
-        "link": "https://example.com",
-        "logo": "https://example.com",
-        "logoSquare": "https://example.com",
+        "name": "OnBali",
+        "link": "https://www.mynewsdesk.com/on-bali/",
+        "logo": "https://mnd-assets.mynewsdesk.com/image/upload/c_limit,dpr_auto,f_auto,q_auto:good,w_600/wh0ibn8dp1s5qagrr789kj",
+        "logoSquare": "https://mnd-assets.mynewsdesk.com/image/upload/c_limit,dpr_auto,f_auto,q_auto:good,w_600/wh0ibn8dp1s5qagrr789kj",
         "profiles":[],
         "about": "Travelling site",
         "workingSince": "2024-10-01T00:00:00.000Z",
