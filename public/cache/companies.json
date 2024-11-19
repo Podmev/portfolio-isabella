@@ -1,0 +1,44 @@
+[
+    {
+        "_id": "673cc63102e38d206fb0612",
+        "name": "https://example.com",
+        "link": "https://example.com",
+        "logo": "https://example.com",
+        "logoSquare": "https://example.com",
+        "profiles":[],
+        "about": "Travelling site",
+        "workingSince": "2024-10-01T00:00:00.000Z",
+        "workingTill": null,
+        "positions": ["copywriter"],
+        "tags": ["trips", "Bali"]
+    },
+    {
+        "_id": "673cbfe6af1bf5f0648acdb3",
+        "name": "Adsterra",
+        "link": "https://adsterra.com",
+        "logo": "https://adsterra.com/_nuxt/img/logo_desktop.1932b11.svg",
+        "logoSquare": "https://downloads.intercomcdn.com/i/o/236606/1fe2870ef742b8b3316bf200/7226b57ed1479cdf72f6fa4fb21f13bb.png",
+        "profiles":[
+            {"lang":"pt", "link":"https://adsterra.com/blog/br/author/isabella_c/"},
+            {"lang":"es", "link": "https://adsterra.com/blog/es/author/isabella_c/"}
+        ],
+        "about": "Adsterra is a powerful online advertising network for brands, agencies, and media buyers. With over 20 targeting settings, you deliver ads to the best-matching audiences.",
+        "workingSince": "2022-07-01T00:00:00.000Z",
+        "workingTill": null,
+        "positions": ["copywriter", "translator"],
+        "tags": ["online advertising", "site monetization", "marketing"]
+    },
+    {
+        "_id": "673cc002b6990b0ce20f8bb4",
+        "name": "Kommo",
+        "link": "https://www.kommo.com/",
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbEpQCyRKHy6obmtq2v816nJqaPzj7FLOkjA&s",
+        "logoSquare": "https://pcfcdn.kommo.com/blog/images/kommo-team.png",
+        "profiles": [],
+        "about": "Kommo is a cloud-based customer relationship management (CRM) platform that helps businesses improve communication between customers and companies.",
+        "workingSince": "2021-01-01T00:00:00.000Z",
+        "workingTill": "2022-01-01T00:00:00.000Z",
+        "positions": ["copywriter", "translator", "speaker", "platform translator"],
+        "tags": ["CRM"]
+    }
+]
