@@ -1,17 +1,18 @@
 import { model, Schema, models } from "mongoose";
 import slugify from "slugify";
 
-
 const companySchema = new Schema(
   {
     name: { type: String, required: true },
     link: { type: String, required: true },
     logo: { type: String, required: true },
     logoSquare: { type: String, required: true },
-    profiles: [{
-      lang: { type: String, required: true },
-      link: { type: String, required: true }
-    }],
+    profiles: [
+      {
+        lang: { type: String, required: true },
+        link: { type: String, required: true },
+      },
+    ],
     about: { type: String, required: true },
     workingSince: { type: Date, required: true },
     workingTill: { type: Date, required: false },

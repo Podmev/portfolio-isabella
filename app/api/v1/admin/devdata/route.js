@@ -8,8 +8,9 @@ export async function DELETE(req) {
   await initMongoose();
   console.log("deleteData");
   try {
-    await articleModel.deleteMany();
     await companyModel.deleteMany();
+    await articleModel.deleteMany();
+    
     console.log("Data successfully deleted!");
     return NextResponse.json(
       { status: "success", message: null },
@@ -28,11 +29,11 @@ export async function POST(req) {
   await initMongoose();
   console.log("importData");
   try {
-    const articles = (await axiosWithUrl.get("cache/articles.json")).data;
     const companies = (await axiosWithUrl.get("cache/companies.json")).data;
+    const articles = (await axiosWithUrl.get("cache/articles.json")).data;
 
-    await articleModel.create(articles);
     await companyModel.create(companies);
+    await articleModel.create(articles);
 
     console.log("Data successfully loaded!");
     return NextResponse.json(
@@ -55,15 +56,16 @@ export async function PATCH(req) {
   await initMongoose();
   console.log("reimportData");
   try {
-    await articleModel.deleteMany();
     await companyModel.deleteMany();
+    await articleModel.deleteMany();
+
     console.log("Data successfully deleted!");
 
-    const articles = (await axiosWithUrl.get("cache/articles.json")).data;
     const companies = (await axiosWithUrl.get("cache/companies.json")).data;
+    const articles = (await axiosWithUrl.get("cache/articles.json")).data;
 
-    await articleModel.create(articles);
     await companyModel.create(companies);
+    await articleModel.create(articles);
 
     console.log("Data successfully loaded!");
     return NextResponse.json(
@@ -81,5 +83,3 @@ export async function PATCH(req) {
     );
   }
 }
-
-

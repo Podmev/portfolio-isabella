@@ -1,5 +1,6 @@
-import { model, Schema, models } from "mongoose";
+import { model, Schema, models, mongoose } from "mongoose";
 import slugify from "slugify";
+import companyModel from "./companyModel";
 
 // TODO add fields:
 // createdAt
@@ -14,7 +15,7 @@ const articleSchema = new Schema(
     link: { type: String, required: true },
     image: { type: String, required: false },
     date: { type: Date, required: true },
-    company: { type: String, required: true },
+    company: { type: mongoose.Schema.ObjectId, ref: "Company", required: true },
     type: { type: String, required: true },
     originLang: { type: String, required: true },
     language: { type: String, required: true },
@@ -33,6 +34,14 @@ articleSchema.pre("save", function (next) {
   this.slug = slugify(`${this.englishName} ${this.language}`, {
     lower: true,
   }).replace(":", "");
+  next();
+});
+
+articleSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: "company",
+    select: "name logo",
+  });
   next();
 });
 
