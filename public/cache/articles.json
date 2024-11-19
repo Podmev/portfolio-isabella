@@ -219,11 +219,7 @@
     "type": "Copy",
     "originLang": "EN",
     "language": "EN",
-    "tags": [
-      "travel",
-      "Bali",
-      "Sanur"
-    ],
+    "tags": ["travel", "Bali", "Sanur"],
     "summary": "Sanur, located on Bali’s southeastern coast, offers a peaceful retreat with calm beaches, water sports, and cultural attractions like the Sanur Village Festival and Pura Blanjong Temple. Ideal for relaxation, it has a variety of accommodation options, wellness retreats, and a laid-back nightlife, making it perfect for a tranquil getaway."
   },
   {
@@ -237,11 +233,7 @@
     "type": "Translation",
     "originLang": "EN",
     "language": "PT",
-    "tags": [
-      "WhatsApp",
-      "Business",
-      "CRM"
-    ],
+    "tags": ["WhatsApp", "Business", "CRM"],
     "summary": "WhatsApp is a popular messaging app used by billions, while WhatsApp Business is an enhanced version designed for businesses, offering features like a business profile, product catalog, and message automation. The main difference between the two is that WhatsApp Business is geared toward improving customer communication and online presence for small businesses, while the WhatsApp Business API is a paid solution for medium to large businesses, with additional features like chatbot automation and CRM integration."
   }
 ]
