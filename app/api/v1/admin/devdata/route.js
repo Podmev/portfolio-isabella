@@ -30,7 +30,7 @@ export async function POST(req) {
     await articleModel.create(articles);
     console.log("Data successfully loaded!");
     return NextResponse.json(
-      { status: "success", message: `Imported ${articles.size} articles` },
+      { status: "success", message: `Imported ${articles.length} articles` },
       { status: 200 }
     );
   } catch (err) {

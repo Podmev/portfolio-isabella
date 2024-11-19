@@ -11,6 +11,7 @@ const articleSchema = new Schema(
     name: { type: String, required: true },
     englishName: { type: String, required: true },
     link: { type: String, required: true },
+    imageLink: { type: String, required: true },
     date: { type: Date, required: true },
     company: { type: String, required: true },
     type: { type: String, required: true },
