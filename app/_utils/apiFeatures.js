@@ -1,3 +1,5 @@
+import { Types } from "mongoose";
+
 class APIFeatures {
   constructor(query, queryString) {
     this.query = query;
@@ -5,21 +7,19 @@ class APIFeatures {
   }
 
   filter() {
-    const queryObj = Object.fromEntries(this.queryString);
-    
+    const processedOperatorsQueryString = this.processOperators(
+      //converting URLSearchParams to object then to entries
+      Object.entries(Object.fromEntries(this.queryString))
+    );
+    const queryObj = Object.fromEntries(processedOperatorsQueryString);
+
     const exludedFields = ["page", "sort", "limit", "fields"];
     exludedFields.forEach((el) => delete queryObj[el]);
 
-    // 1B) Advanced filtering
-    let queryStr = JSON.stringify(queryObj);
-    queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
-    // console.log(JSON.parse(queryStr));
-    
     // {difficulty: 'easy', duration: {$gte: 5}}
     // {difficulty: 'easy', duration: {gte: 5}}
 
-    // let query = Tour.find(JSON.parse(queryStr));
-    this.query = this.query.find(JSON.parse(queryStr));
+    this.query = this.query.find(queryObj);
     return this;
   }
 
@@ -52,6 +52,32 @@ class APIFeatures {
     // page=3&limit=10, 1-10 page 1, 11-20 page 2, 21-30 page 3
     this.query = this.query.skip(skip).limit(limit);
     return this;
+  }
+
+  processOperators(entries) {
+    return entries.map((entry) => this.remapEntry(entry));
+  }
+
+  remapEntry(entry) {
+    const [key, value, operator] = this.getKeyValueOperator(entry);
+    if (!operator) {
+      return [key, value];
+    }
+    return [key, { [`$${operator}`]: value }];
+  }
+
+  getKeyValueOperator(entry) {
+    const [key, value] = entry;
+    if (!key.includes("[")) {
+      // there is no operator
+      return entry;
+    }
+    const [newKey, rest] = key.split("[");
+    const [operator, _] = rest.split("]");
+    if (!operator in ["lt", "gt", "gte", "lte", "qe", "ne"]) {
+      return entry;
+    }
+    return [newKey, value, operator];
   }
 }
 
