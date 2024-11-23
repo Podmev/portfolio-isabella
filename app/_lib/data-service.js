@@ -41,6 +41,8 @@ export async function getCountries() {
   }
 }
 
+// -------------- Article --------------------------
+
 export const getArticles = async function (searchParams) {
   const config = { params: searchParams };
   const { data, error } = await axiosWithUrl.get("/api/v1/articles", config);
@@ -65,4 +67,31 @@ export const getArticle = async function (id) {
   const article = await data.data.article;
   return article;
 };
+
+// ------------- Company --------------
+
+export const getCompanies = async function (searchParams) {
+  const config = { params: searchParams };
+  const { data, error } = await axiosWithUrl.get("/api/v1/companies", config);
+  if (error) {
+    console.error(error);
+    throw new Error("Companies could not be loaded");
+  }
+
+  const companies = await data.data.companies;
+  return companies;
+};
+
+export const getCompany = async function (id) {
+  const { data, error } = await axiosWithUrl.get(`/api/v1/companies/${id}`);
+
+  if (error) {
+    console.error(error);
+    throw new Error("Company could not be loaded");
+  }
+
+  const company = await data.data.company;
+  return company;
+};
+
 
