@@ -2,6 +2,7 @@
   {
     "_id": "673ce6889203e8e2262eae5a",
     "name": "OnBali",
+    "oldName": null,
     "link": "https://www.mynewsdesk.com/on-bali/",
     "logo": "https://mnd-assets.mynewsdesk.com/image/upload/c_limit,dpr_auto,f_auto,q_auto:good,w_600/wh0ibn8dp1s5qagrr789kj",
     "logoSquare": "https://mnd-assets.mynewsdesk.com/image/upload/c_limit,dpr_auto,f_auto,q_auto:good,w_600/wh0ibn8dp1s5qagrr789kj",
@@ -10,11 +11,13 @@
     "workingSince": "2024-10-01T00:00:00.000Z",
     "workingTill": null,
     "positions": ["copywriter"],
+    "employmentType": "freelance",
     "tags": ["trips", "Bali", "travel"]
   },
   {
     "_id": "673cbfe6af1bf5f0648acdb3",
     "name": "Adsterra",
+    "oldName": null,
     "link": "https://adsterra.com",
     "logo": "https://adsterra.com/_nuxt/img/logo_desktop.1932b11.svg",
     "logoSquare": "https://downloads.intercomcdn.com/i/o/236606/1fe2870ef742b8b3316bf200/7226b57ed1479cdf72f6fa4fb21f13bb.png",
@@ -32,11 +35,13 @@
     "workingSince": "2022-07-01T00:00:00.000Z",
     "workingTill": null,
     "positions": ["copywriter", "translator"],
+    "employmentType": "freelance",
     "tags": ["online advertising", "site monetization", "marketing"]
   },
   {
     "_id": "673cc002b6990b0ce20f8bb4",
     "name": "Kommo",
+    "oldName": "AmoCRM",
     "link": "https://www.kommo.com/",
     "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbEpQCyRKHy6obmtq2v816nJqaPzj7FLOkjA&s",
     "logoSquare": "https://pcfcdn.kommo.com/blog/images/kommo-team.png",
@@ -45,6 +50,7 @@
     "workingSince": "2021-01-01T00:00:00.000Z",
     "workingTill": "2022-01-01T00:00:00.000Z",
     "positions": ["copywriter", "translator", "speaker", "platform translator"],
+    "employmentType": "full-time",
     "tags": ["CRM"]
   }
 ]

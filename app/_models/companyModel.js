@@ -4,6 +4,7 @@ import slugify from "slugify";
 const companySchema = new Schema(
   {
     name: { type: String, required: true },
+    oldName: { type: String },
     link: { type: String, required: true },
     logo: { type: String, required: true },
     logoSquare: { type: String, required: true },
@@ -17,6 +18,11 @@ const companySchema = new Schema(
     workingSince: { type: Date, required: true },
     workingTill: { type: Date, required: false },
     positions: [{ type: String, required: true }],
+    employmentType: {
+      type: String,
+      enum: ['full-time', 'part-time', 'freelance'],
+      default: 'full-time'
+    },
     tags: [{ type: String, required: true }],
     slug: String,
   },
