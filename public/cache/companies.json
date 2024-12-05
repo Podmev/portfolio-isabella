@@ -6,7 +6,12 @@
     "link": "https://www.mynewsdesk.com/on-bali/",
     "logo": "https://mnd-assets.mynewsdesk.com/image/upload/c_limit,dpr_auto,f_auto,q_auto:good,w_600/wh0ibn8dp1s5qagrr789kj",
     "logoSquare": "https://mnd-assets.mynewsdesk.com/image/upload/c_limit,dpr_auto,f_auto,q_auto:good,w_600/wh0ibn8dp1s5qagrr789kj",
-    "profiles": [],
+    "profiles": [
+      {
+        "lang": "en",
+        "link": "https://onbali.com/about-us/isabella/?nocache=true"
+      }
+    ],
     "about": "ONBALI is an online platform that helps tourists plan their holiday in Bali. It offers detailed reviews of hotels, restaurants, and activities, along with itineraries and local tips. The site also provides the latest travel updates and a forum for travelers to share experiences.",
     "workingSince": "2024-10-01T00:00:00.000Z",
     "workingTill": null,
