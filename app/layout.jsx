@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
           <Logo />
           <Navigation />
         </header>
-        <main>{children}</main>
+        <main className="grid grid-cols-[16rem_1fr] h-full">{children}</main>
         <footer>Copyright by Isabella Camardella</footer>
       </body>
     </html>
