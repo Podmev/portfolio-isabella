@@ -1,5 +1,5 @@
 const config = {
-  content: ["./app/**/*.{jsx}"],
+  content: ["./src/**/*.{jsx}"],
   theme: {
     extend: {
       colors: {
