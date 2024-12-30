@@ -33,7 +33,7 @@ async function ArticleCard({ article }) {
         <div className="flex">
           <h2>{englishName}</h2>
           <p>{`${type} - ${language}`}</p>
-          <p>{formatTime(date)}</p>
+          <p className="text-red-500">{formatTime(date)}</p>
         </div>
         {/* image: only image or generated image with title*/}
         <div className="flex-1 relative">
