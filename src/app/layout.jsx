@@ -1,6 +1,9 @@
 import Logo from "../components/Logo";
 import Navigation from "../components/Navigation";
 
+// These styles apply to every route in the application
+import "@/styles/globals.css";
+
 export const metadata = {
   title: "Portfolio: Isabella",
 };
