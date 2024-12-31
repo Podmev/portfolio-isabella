@@ -37,7 +37,7 @@ async function ArticleCard({ article }) {
         </div>
         {/* image: only image or generated image with title*/}
         <div className="flex-1 relative">
-          {null ? (
+          {image ? (
             <Image
               src={image}
               width={600}
