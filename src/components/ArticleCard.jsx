@@ -22,22 +22,22 @@ async function ArticleCard({ article }) {
   const { companyName, companyLogo } = company;
 
   return (
-    <div className="flex border-primary-800 border">
+    <div className="flex flex-col border-primary-800 border">
       {/* head: logo company, name, original link */}
       <div>
         <h3>{companyName}</h3>
       </div>
       {/* body: main info, image*/}
-      <div className="flex">
+      <div className="flex flex-col">
         {/* body: title, original title, date, read time, type, languages, tags*/}
-        <div className="flex">
+        <div className="flex flex-col">
           <h2>{englishName}</h2>
           <p>{`${type} - ${language}`}</p>
-          <p className="text-red-500">{formatTime(date)}</p>
+          <p className="">{formatTime(date)}</p>
         </div>
         {/* image: only image or generated image with title*/}
         <div className="flex-1 relative">
-          {image ? (
+          {null ? (
             <Image
               src={image}
               width={600}
