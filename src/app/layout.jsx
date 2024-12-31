@@ -3,6 +3,7 @@ import { Eczar } from "next/font/google";
 import "@/styles/globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SideBar from "@/components/SideBar";
 
 const eczar = Eczar({
   subsets: ["latin"],
@@ -22,14 +23,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${eczar.className} antialiased bg-primary-950 text-primary-100 min-h-screen flex flex-col relative`}>
-        <Header/>
-        <div className="flex-1 px-8 py-12 grid">
-          <main className="max-w-7xl mx-auto w-full">
-              {children}
-          </main>
+      <body
+        className={`${eczar.className} antialiased bg-primary-950 text-primary-100 min-h-screen flex flex-col relative`}
+      >
+        <Header />
+        <div className="flex-1 px-8 py-12 grid grid-cols-12">
+          <SideBar className="col-span-2" />
+          <main className="max-w-7xl mx-auto w-full col-span-10">{children}</main>
         </div>
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );
