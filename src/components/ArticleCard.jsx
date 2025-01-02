@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import formatTime from "@/utils/formatTime";
+import TextPoster from "./TextPoster";
 
 //structure is like daily.dev articles
 async function ArticleCard({ article }) {
@@ -19,18 +20,30 @@ async function ArticleCard({ article }) {
     slug,
   } = article;
 
-  const { companyName, companyLogo } = company;
+  const { name: companyName, logo } = company;
 
   return (
-    <div className="flex flex-col border-primary-800 border">
+    <div className="flex flex-col border-primary-800 border gap-3">
       {/* head: logo company, name, original link */}
-      <div>
+      <div className="mx-2 text-primary-50 text-bold uppercase">
         <h3>{companyName}</h3>
+        {/* <Image
+          src={logo}
+          height="60"
+          width="60"
+          alt={`${companyName} Logo`}
+          quality={90}
+          className="flex-1 relative"
+        /> */}
       </div>
       {/* body: main info, image*/}
-      <div className="flex flex-col">
+      <Link
+        href={`/articles/${article.slug}`}
+        title={name}
+        className="flex flex-col"
+      >
         {/* body: title, original title, date, read time, type, languages, tags*/}
-        <div className="flex flex-col">
+        <div className="flex flex-col mx-2">
           <h2>{englishName}</h2>
           <p>{`${type} - ${language}`}</p>
           <p className="">{formatTime(date)}</p>
@@ -43,15 +56,15 @@ async function ArticleCard({ article }) {
               width={600}
               height={400}
               alt={`Article image: ${englishName}`}
-              className="object-cover border-r border-primary-800"
+              className="object-cover border-r border-primary-800 "
             />
           ) : (
-            <p>No image</p>
+            <TextPoster text={name} company={company} />
           )}
         </div>
-      </div>
+      </Link>
       {/* footer: likes, comments, bookmarks, copy link */}
-      <div>
+      <div className="mx-2">
         <h3>
           <Link href={`/articles/${article.slug}`}>{article.name}</Link>
         </h3>
