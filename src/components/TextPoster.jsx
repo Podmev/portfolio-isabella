@@ -5,7 +5,6 @@ import Image from "next/image";
  *
  */
 function TextPoster({ text, company }) {
-  console.log(company);
   const logo = company.name ? (
     <Image
       src={company.logo}

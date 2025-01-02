@@ -25,7 +25,7 @@ async function ArticleCard({ article }) {
   return (
     <div className="flex flex-col border-primary-800 border gap-3">
       {/* head: logo company, name, original link */}
-      <div className="mx-2 text-primary-50 text-bold uppercase">
+      <div className="m-2 text-primary-50 text-bold uppercase">
         <h3>{companyName}</h3>
         {/* <Image
           src={logo}
@@ -44,9 +44,19 @@ async function ArticleCard({ article }) {
       >
         {/* body: title, original title, date, read time, type, languages, tags*/}
         <div className="flex flex-col mx-2">
-          <h2>{englishName}</h2>
+          <h3 className="text-accent-800 font-bold break-words line-clamp-2">
+            {englishName}
+          </h3>
           <p>{`${type} - ${language}`}</p>
-          <p className="">{formatTime(date)}</p>
+          <div>
+            <time
+              className="text-xs text-gray-400"
+              dateTime={date}
+              title={new Date(date)}
+            >
+              {formatTime(date)}
+            </time>
+          </div>
         </div>
         {/* image: only image or generated image with title*/}
         <div className="flex-1 relative">
