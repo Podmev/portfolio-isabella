@@ -1,38 +1,33 @@
-import { Eczar } from "next/font/google";
-// These styles apply to every route in the application
+﻿import { Forum, Inter } from "next/font/google";
 import "@/styles/globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import SideBar from "@/components/SideBar";
 
-const eczar = Eczar({
+const inter = Inter({
   subsets: ["latin"],
   display: "swap",
+  variable: "--font-sans",
+});
+
+const forum = Forum({
+  subsets: ["latin"],
+  weight: ["400"],
+  display: "swap",
+  variable: "--font-serif",
 });
 
 export const metadata = {
-  // title: "The Wild Oasis",
   title: {
-    template: "%s | Portfolio: Isabella",
-    default: "Welcome | Portfolio: Isabella",
+    template: "%s | Isabella Camardella",
+    default: "External Writer Portfolio",
   },
   description:
-    "Portfolio of Isabella Camardella with full information about experiences, works, education and detailed collection of own written articles",
+    "External writer portfolio powered by Copy Vortex.",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${eczar.className} antialiased bg-primary-950 text-primary-100 min-h-screen flex flex-col relative`}
-      >
-        <Header />
-        <div className="flex-1 px-8 py-12 grid grid-cols-12">
-          <SideBar className="col-span-2" />
-          <main className="max-w-7xl mx-auto w-full col-span-10">{children}</main>
-        </div>
-        <Footer />
-      </body>
+      <body className={`${inter.variable} ${forum.variable}`}>{children}</body>
     </html>
   );
 }
+

@@ -1,12 +1,5 @@
-import Company from "@/components/Company";
+﻿import { redirect } from "next/navigation";
 
-export default async function Page(props) {
-  const params = await props.params;
-  const id = params.id;
-  return (
-    <div>
-      <h1>Company page {id}</h1>
-      <Company id={id} />
-    </div>
-  );
+export default function Page() {
+  redirect("/en");
 }

@@ -1,3 +1,5 @@
-export default function Page(){
-    return <h1>Blog page</h1>
+﻿import { redirect } from "next/navigation";
+
+export default function Page() {
+  redirect("/en");
 }

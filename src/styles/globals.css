@@ -1,41 +1,111 @@
-@tailwind base;
+﻿@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --background: 36 33% 97%;
+  --foreground: 18 14% 14%;
+  --card: 0 0% 100%;
+  --card-foreground: 18 14% 14%;
+  --primary: 18 14% 14%;
+  --primary-foreground: 0 0% 100%;
+  --accent: 20 42% 84%;
+  --accent-foreground: 18 14% 14%;
+  --secondary: 30 17% 93%;
+  --secondary-foreground: 18 14% 14%;
+  --muted: 28 14% 91%;
+  --muted-foreground: 20 8% 40%;
+  --surface-soft: 24 38% 94%;
+  --surface-alt: 30 10% 96%;
+  --border: 24 14% 84%;
+  --input: 24 14% 84%;
+  --ring: 22 32% 72%;
+  --radius: 18px;
+}
 
-@layer components {
-  .spinner {
-    margin: 3.2rem auto 1.6rem;
-    width: 60px;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    border: 8px solid theme('colors.primary.900');
-    border-right-color: theme('colors.primary.200');
-    animation: rotate 1s infinite linear;
+@layer base {
+  * {
+    @apply border-border;
   }
 
-  .spinner-mini {
-    margin: 0;
-    width: 20px;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    border: 2px solid theme('colors.primary.200');
-    border-right-color: transparent;
-    animation: rotate 1s infinite linear;
+  html {
+    scroll-behavior: smooth;
   }
 
-  @keyframes rotate {
-    to {
-      transform: rotate(1turn);
-    }
+  body {
+    @apply min-h-screen bg-background text-foreground antialiased;
+    font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: hsl(var(--foreground));
+    font-family: var(--font-serif), Georgia, "Times New Roman", serif;
+    letter-spacing: 0;
+    line-height: 1.1;
+  }
+
+  p {
+    line-height: 1.7;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  input,
+  textarea,
+  select {
+    background: hsl(var(--card));
+    color: hsl(var(--foreground));
+    border: 1px solid hsl(var(--input));
+    border-radius: calc(var(--radius) - 6px);
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px hsl(var(--ring) / 0.35);
+    border-color: hsl(var(--ring));
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  ::selection {
+    background: hsl(var(--accent) / 0.65);
+    color: hsl(var(--foreground));
   }
 }
 
+.section-soft-gradient {
+  background: linear-gradient(
+    to bottom,
+    #baa094 0%,
+    #c8b3a9 18%,
+    #ddd0ca 38%,
+    #e9e6e4 68%,
+    #f0f0f0 100%
+  );
+}
 
-/*For data picker*/
-.rdp {
-  --rdp-cell-size: 32px !important;
-  --rdp-accent-color: theme('colors.accent.500') !important;
-  --rdp-background-color: theme('colors.accent.600') !important;
-  margin: 0 !important;
-} 
+.carousel-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--border)) transparent;
+}
