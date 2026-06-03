@@ -8,13 +8,26 @@ export function generateStaticParams() {
   return supportedLocales.map((locale) => ({ locale }));
 }
 
+function resolveSupportedLocale(value) {
+  const locale = value || defaultLocale;
+  return supportedLocales.includes(locale) ? locale : null;
+}
+
 export async function generateMetadata({ params }) {
   const resolvedParams = await params;
-  const locale = resolvedParams?.locale || defaultLocale;
+  const locale = resolveSupportedLocale(resolvedParams?.locale);
+
+  if (!locale) {
+    return {
+      title: "Portfolio",
+      description: "Writer portfolio.",
+    };
+  }
+
   const portfolio = await getPortfolioData({ locale });
   const profile = portfolio?.profile || {};
   const user = portfolio?.user || {};
-  const name = profile.publicName || user.name || "Isabella Camardella";
+  const name = profile.publicName || user.name || "Writer";
 
   return {
     title: `${name} | Portfolio`,
@@ -24,9 +37,9 @@ export async function generateMetadata({ params }) {
 
 export default async function LocaleHomePage({ params, searchParams }) {
   const resolvedParams = await params;
-  const locale = resolvedParams?.locale || defaultLocale;
+  const locale = resolveSupportedLocale(resolvedParams?.locale);
 
-  if (!supportedLocales.includes(locale)) notFound();
+  if (!locale) notFound();
 
   const resolvedSearchParams = await searchParams;
   const portfolio = await getPortfolioData({ locale, searchParams: resolvedSearchParams });

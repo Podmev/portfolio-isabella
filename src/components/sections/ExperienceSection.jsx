@@ -10,7 +10,8 @@ function formatPeriod(item) {
 
 export default function ExperienceSection({ portfolio }) {
   const items = (portfolio?.profile?.careerItems || []).filter((item) => item?.isRelevantExperience !== false).slice(0, 5);
-  const image = portfolio?.profile?.showcaseImages?.[1]?.url || "/experience.webp";
+  const image = portfolio?.profile?.showcaseImages?.[1]?.url || "";
+  const name = portfolio?.profile?.publicName || portfolio?.user?.name || "Writer";
 
   if (!items.length) return null;
 
@@ -33,7 +34,7 @@ export default function ExperienceSection({ portfolio }) {
         </div>
 
         <div className="mx-auto w-full max-w-sm lg:max-w-md">
-          <PortfolioPortrait src={image} alt="Portrait of Isabella" />
+          <PortfolioPortrait src={image} alt={`Portrait of ${name}`} />
         </div>
       </div>
     </Section>

@@ -14,13 +14,13 @@ const forum = Forum({
 
 function getHeroImage(portfolio) {
   const profile = portfolio?.profile || {};
-  return profile.showcaseImages?.[0]?.url || profile.bannerImage || "/isabella-hero.webp";
+  return profile.showcaseImages?.[0]?.url || profile.bannerImage || "";
 }
 
 export default function Hero({ portfolio, locale }) {
   const profile = portfolio?.profile || {};
   const user = portfolio?.user || {};
-  const name = profile.publicName || user.name || "Isabella Camardella";
+  const name = profile.publicName || user.name || "Writer";
   const headline = profile.headline || "Copywriter • Editor • Translator";
   const intro = profile.portfolioIntro || profile.bio || "Content specialist with experience in copywriting, translation, and content management for digital marketing projects.";
   const worksCount = portfolio?.summary?.totalPublicWorks || portfolio?.works?.length || 0;
