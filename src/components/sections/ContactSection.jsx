@@ -1,5 +1,6 @@
 ﻿import Section from "@/components/sections/Section.jsx";
 import SectionTitle from "@/components/sections/SectionTitle.jsx";
+import { getCopyVortexWriterUrl } from "@/lib/copyVortexWriterUrl.js";
 
 function normalizeTelegram(value = "") {
   if (!value) return "";
@@ -12,17 +13,6 @@ function normalizeWhatsapp(value = "") {
   return `https://wa.me/${value.replace(/[^\d+]/g, "").replace(/^\+/, "")}`;
 }
 
-function normalizeBaseUrl(value = "") {
-  return String(value || "").trim().replace(/\/+$/, "");
-}
-
-function getCopyVortexWriterUrl(portfolio, locale) {
-  const slug = portfolio?.externalSite?.writerSlug || portfolio?.writer?.canonicalSlug || portfolio?.profile?.customSlug || portfolio?.user?.username || "";
-  if (!slug) return "";
-
-  const baseUrl = normalizeBaseUrl(process.env.NEXT_PUBLIC_COPY_VORTEX_URL || "https://copyvortex.com");
-  return `${baseUrl}/${locale}/writers/${encodeURIComponent(slug)}`;
-}
 
 export default function ContactSection({ portfolio, locale = "en" }) {
   const profile = portfolio?.profile || {};
@@ -105,3 +95,4 @@ function SocialLink({ href, label }) {
     </a>
   );
 }
+
