@@ -22,7 +22,7 @@ export default function Hero({ portfolio, locale }) {
   const user = portfolio?.user || {};
   const name = profile.publicName || user.name || "Writer";
   const headline = profile.headline || "Copywriter • Editor • Translator";
-  const intro = profile.portfolioIntro || profile.bio || "Content specialist with experience in copywriting, translation, and content management for digital marketing projects.";
+  const bio = profile.bio || profile.portfolioIntro || "Content specialist with experience in copywriting, translation, and content management for digital marketing projects.";
   const worksCount = portfolio?.summary?.totalPublicWorks || portfolio?.works?.length || 0;
   const nichesCount = portfolio?.summary?.totalPublicNiches || portfolio?.niches?.length || 0;
   const languageCount = profile.languages?.length || portfolio?.tags?.languages?.length || 0;
@@ -40,7 +40,7 @@ export default function Hero({ portfolio, locale }) {
           </h1>
 
           <p className={`${forum.className} max-w-xl text-justify text-sm leading-5 text-muted-foreground sm:text-base sm:leading-6 md:text-lg md:leading-7`}>
-            {intro}
+            {bio}
           </p>
 
           <div className="grid gap-3 text-center sm:grid-cols-3 sm:text-left">
@@ -76,4 +76,5 @@ export default function Hero({ portfolio, locale }) {
     </Section>
   );
 }
+
 
