@@ -16,7 +16,7 @@ function getDateLabel(work, locale) {
   }
 }
 
-function WorkCard({ work, locale }) {
+export function WorkCard({ work, locale }) {
   const tags = [...(work.industries || []), ...(work.formats || []), ...(work.activities || [])]
     .map(getTagLabel)
     .filter(Boolean)
@@ -72,4 +72,5 @@ export default function WorksSection({ portfolio, locale }) {
     </Section>
   );
 }
+
 

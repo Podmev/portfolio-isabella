@@ -56,3 +56,6 @@ export default function NichesCarousel({ niches = [], locale = "en" }) {
     </section>
   );
 }
+
+
+
