@@ -1,4 +1,5 @@
-﻿import Section from "@/components/sections/Section.jsx";
+﻿import Footer from "@/components/Footer.jsx";
+import Section from "@/components/sections/Section.jsx";
 import { WorkCard } from "@/components/sections/WorksSection.jsx";
 
 function getNiches(portfolio) {
@@ -91,6 +92,10 @@ export default function PortfolioNichePage({ portfolio, locale, searchParams = {
           </div>
         )}
       </Section>
+      <Footer portfolio={portfolio} />
     </>
   );
 }
+
+
+
