@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="720" viewBox="0 0 412 412" role="img" aria-labelledby="title desc">
+    <title id="title">Ecommerce niche artwork</title>
+    <desc id="desc">Soft thematic visual for the Ecommerce niche.</desc>
+    <defs>
+        <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#FFE0C2"/>
+            <stop offset="100%" stop-color="#FFD5E7"/>
+        </linearGradient>
+        <radialGradient id="glow" cx="72%" cy="22%" r="70%">
+            <stop offset="0%" stop-color="#ffffff" stop-opacity=".58"/>
+            <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#1f2937" flood-opacity=".12"/>
+        </filter>
+    </defs>
+    <rect width="412" height="412" rx="54" fill="url(#bg)"/>
+    <rect width="412" height="412" rx="54" fill="url(#glow)"/>
+    <path d="M-20 324 C 72 288, 142 348, 228 318 S 346 282, 432 326 V412 H-20 Z" fill="#ffffff" opacity=".2"/>
+    <g filter="url(#softShadow)">
+        <path d="M112 154 H300 L278 300 H134 Z" fill="#fff" opacity=".78"/><path d="M158 154 C158 108 254 108 254 154" fill="none" stroke="#E9788F" stroke-width="18" stroke-linecap="round" opacity=".48"/><circle cx="174" cy="232" r="18" fill="#E9788F" opacity=".34"/><circle cx="238" cy="232" r="18" fill="#E9788F" opacity=".34"/>
+    </g>
+</svg>

@@ -109,3 +109,44 @@
   scrollbar-width: thin;
   scrollbar-color: hsl(var(--border)) transparent;
 }
+
+@layer components {
+  .writer-theme-scope {
+    --writer-page: hsl(var(--background));
+    --writer-surface: hsl(var(--card) / 0.88);
+    --writer-surface-soft: hsl(var(--surface-soft));
+    --writer-surface-muted: hsl(var(--surface-alt));
+    --writer-border: hsl(var(--border));
+    --writer-text: hsl(var(--foreground));
+    --writer-muted: hsl(var(--muted-foreground));
+    --writer-accent-surface: hsl(var(--accent) / 0.7);
+    --writer-accent-border: hsl(var(--ring));
+    background: var(--writer-page);
+    color: var(--writer-text);
+  }
+
+  .writer-surface {
+    border-color: var(--writer-border);
+    background: var(--writer-surface);
+    color: var(--writer-text);
+    backdrop-filter: blur(18px);
+  }
+
+  .writer-surface-soft {
+    border-color: var(--writer-border);
+    background: var(--writer-surface-soft);
+    color: var(--writer-text);
+    backdrop-filter: blur(18px);
+  }
+
+  .writer-surface-muted {
+    border-color: var(--writer-border);
+    background: var(--writer-surface-muted);
+    color: var(--writer-text);
+    backdrop-filter: blur(18px);
+  }
+
+  .writer-muted-text {
+    color: var(--writer-muted);
+  }
+}

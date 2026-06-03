@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="720" viewBox="0 0 412 412" role="img" aria-labelledby="title desc">
+    <title id="title">Digital Marketing niche artwork</title>
+    <desc id="desc">Soft thematic visual for the Digital Marketing niche.</desc>
+    <defs>
+        <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#FFD9AF"/>
+            <stop offset="100%" stop-color="#C9E7FF"/>
+        </linearGradient>
+        <radialGradient id="glow" cx="72%" cy="22%" r="70%">
+            <stop offset="0%" stop-color="#ffffff" stop-opacity=".58"/>
+            <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#1f2937" flood-opacity=".12"/>
+        </filter>
+    </defs>
+    <rect width="412" height="412" rx="54" fill="url(#bg)"/>
+    <rect width="412" height="412" rx="54" fill="url(#glow)"/>
+    <path d="M-20 324 C 72 288, 142 348, 228 318 S 346 282, 432 326 V412 H-20 Z" fill="#ffffff" opacity=".2"/>
+    <g filter="url(#softShadow)">
+        <path d="M108 118 H304 L236 202 V286 L176 316 V202 Z" fill="#fff" opacity=".78"/><path d="M132 142 H280" stroke="#FF7A59" stroke-width="14" stroke-linecap="round" opacity=".52"/><circle cx="300" cy="274" r="42" fill="#FF7A59" opacity=".32"/><path d="M282 274 H318 M300 256 V292" stroke="#fff" stroke-width="12" stroke-linecap="round"/>
+    </g>
+</svg>

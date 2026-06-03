@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="720" viewBox="0 0 412 412" role="img" aria-labelledby="title desc">
+    <title id="title">Sustainability niche artwork</title>
+    <desc id="desc">Soft thematic visual for the Sustainability niche.</desc>
+    <defs>
+        <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#D9F3D1"/>
+            <stop offset="100%" stop-color="#D3EFE6"/>
+        </linearGradient>
+        <radialGradient id="glow" cx="72%" cy="22%" r="70%">
+            <stop offset="0%" stop-color="#ffffff" stop-opacity=".58"/>
+            <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#1f2937" flood-opacity=".12"/>
+        </filter>
+    </defs>
+    <rect width="412" height="412" rx="54" fill="url(#bg)"/>
+    <rect width="412" height="412" rx="54" fill="url(#glow)"/>
+    <path d="M-20 324 C 72 288, 142 348, 228 318 S 346 282, 432 326 V412 H-20 Z" fill="#ffffff" opacity=".2"/>
+    <g filter="url(#softShadow)">
+        <circle cx="206" cy="206" r="100" fill="#fff" opacity=".48"/><path d="M112 238 C164 116 266 102 326 116 C310 212 238 284 112 238 Z" fill="#fff" opacity=".72"/><path d="M138 228 C194 204 242 168 296 126" stroke="#65AA64" stroke-width="16" stroke-linecap="round" opacity=".56"/><path d="M108 204 C116 276 174 326 246 326" fill="none" stroke="#65AA64" stroke-width="14" stroke-linecap="round" opacity=".34"/>
+    </g>
+</svg>
