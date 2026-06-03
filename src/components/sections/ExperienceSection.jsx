@@ -10,7 +10,7 @@ function formatPeriod(item) {
 
 export default function ExperienceSection({ portfolio }) {
   const items = (portfolio?.profile?.careerItems || []).filter((item) => item?.isRelevantExperience !== false).slice(0, 5);
-  const image = portfolio?.profile?.showcaseImages?.[1]?.url || "";
+  const image = portfolio?.profile?.showcaseImages?.[1]?.url || portfolio?.user?.image || "";
   const name = portfolio?.profile?.publicName || portfolio?.user?.name || "Writer";
 
   if (!items.length) return null;
@@ -40,3 +40,4 @@ export default function ExperienceSection({ portfolio }) {
     </Section>
   );
 }
+

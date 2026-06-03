@@ -14,7 +14,7 @@ const forum = Forum({
 
 function getHeroImage(portfolio) {
   const profile = portfolio?.profile || {};
-  return profile.showcaseImages?.[0]?.url || profile.bannerImage || "";
+  return profile.showcaseImages?.[0]?.url || profile.bannerImage || portfolio?.user?.image || "";
 }
 
 export default function Hero({ portfolio, locale }) {
@@ -76,3 +76,4 @@ export default function Hero({ portfolio, locale }) {
     </Section>
   );
 }
+

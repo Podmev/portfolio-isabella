@@ -1,15 +1,12 @@
-﻿import Image from "next/image";
-
-export default function PortfolioPortrait({ src, alt, priority = false }) {
+﻿export default function PortfolioPortrait({ src, alt, priority = false }) {
   return (
     <div className="relative overflow-hidden rounded-[28px] border border-border bg-card shadow-[0_22px_70px_rgba(24,20,18,0.16)]">
       {src ? (
-        <Image
+        <img
           src={src}
           alt={alt}
-          width={760}
-          height={940}
-          priority={priority}
+          loading={priority ? "eager" : "lazy"}
+          fetchPriority={priority ? "high" : "auto"}
           className="aspect-[4/5] h-full w-full object-cover"
         />
       ) : (
