@@ -12,12 +12,25 @@ function normalizeWhatsapp(value = "") {
   return `https://wa.me/${value.replace(/[^\d+]/g, "").replace(/^\+/, "")}`;
 }
 
-export default function ContactSection({ portfolio }) {
+function normalizeBaseUrl(value = "") {
+  return String(value || "").trim().replace(/\/+$/, "");
+}
+
+function getCopyVortexWriterUrl(portfolio, locale) {
+  const slug = portfolio?.externalSite?.writerSlug || portfolio?.writer?.canonicalSlug || portfolio?.profile?.customSlug || portfolio?.user?.username || "";
+  if (!slug) return "";
+
+  const baseUrl = normalizeBaseUrl(process.env.NEXT_PUBLIC_COPY_VORTEX_URL || "https://copyvortex.com");
+  return `${baseUrl}/${locale}/writers/${encodeURIComponent(slug)}`;
+}
+
+export default function ContactSection({ portfolio, locale = "en" }) {
   const profile = portfolio?.profile || {};
   const contact = profile.contact || {};
   const social = profile.socialLinks || {};
   const email = contact.email || "";
   const location = [profile.location?.city, profile.location?.country].filter(Boolean).join(", ");
+  const copyVortexUrl = getCopyVortexWriterUrl(portfolio, locale);
 
   return (
     <Section id="contact">
@@ -35,7 +48,7 @@ export default function ContactSection({ portfolio }) {
           <div className="mt-8 flex flex-wrap items-center gap-3">
             {social.instagram ? <SocialLink href={social.instagram} label="Instagram" /> : null}
             {social.linkedin ? <SocialLink href={social.linkedin} label="LinkedIn" /> : null}
-            {social.website ? <SocialLink href={social.website} label="Website" /> : null}
+            {copyVortexUrl ? <SocialLink href={copyVortexUrl} label="Copy Vortex" /> : null}
           </div>
         </div>
 

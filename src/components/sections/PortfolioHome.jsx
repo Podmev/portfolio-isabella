@@ -11,7 +11,8 @@ export default function PortfolioHome({ portfolio, locale }) {
       <NichesCarousel niches={portfolio?.niches || portfolio?.tags?.niches || []} locale={locale} />
       <WorksSection portfolio={portfolio} locale={locale} />
       <ExperienceSection portfolio={portfolio} />
-      <ContactSection portfolio={portfolio} />
+      <ContactSection portfolio={portfolio} locale={locale} />
     </>
   );
 }
+
