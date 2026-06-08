@@ -6,15 +6,15 @@ import Hero from "@/components/sections/Hero.jsx";
 import NichesCarousel from "@/components/sections/NichesCarousel.jsx";
 import ShowcaseImageSection from "@/components/sections/ShowcaseImageSection.jsx";
 
-export default function PortfolioHome({ portfolio, locale }) {
+export default function PortfolioHome({ portfolio }) {
   return (
     <>
-      <Hero portfolio={portfolio} locale={locale} />
-      <NichesCarousel niches={portfolio?.niches || portfolio?.tags?.niches || []} locale={locale} />
+      <Hero portfolio={portfolio} />
+      <NichesCarousel niches={portfolio?.niches || portfolio?.tags?.niches || []} />
       <ExperienceSection portfolio={portfolio} />
       <ShowcaseImageSection />
-      <ContactSection portfolio={portfolio} locale={locale} />
-      <CopyVortexProfileCta portfolio={portfolio} locale={locale} />
+      <ContactSection portfolio={portfolio} />
+      <CopyVortexProfileCta portfolio={portfolio} />
       <Footer portfolio={portfolio} />
     </>
   );

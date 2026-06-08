@@ -1,4 +1,6 @@
-﻿import Footer from "@/components/Footer.jsx";
+﻿import { useLocale, useTranslations } from "next-intl";
+
+import Footer from "@/components/Footer.jsx";
 import Section from "@/components/sections/Section.jsx";
 import { WorkCard } from "@/components/sections/WorksSection.jsx";
 
@@ -11,33 +13,35 @@ function getNicheSlug(searchParams = {}) {
   return Array.isArray(value) ? value[0] : value;
 }
 
-function getNicheLabel(niches, slug) {
-  if (!slug) return "Portfolio works";
+function getNicheLabel(niches, slug, t) {
+  if (!slug) return t("portfolioWorksMetaTitle");
   const match = niches.find((niche) => niche?.slug === slug);
   return match?.label || slug.replace(/[-_]+/g, " ");
 }
 
-function getName(portfolio) {
-  return portfolio?.profile?.publicName || portfolio?.user?.name || "Writer";
+function getName(portfolio, fallback) {
+  return portfolio?.profile?.publicName || portfolio?.user?.name || fallback;
 }
 
-export default function PortfolioNichePage({ portfolio, locale, searchParams = {} }) {
+export default function PortfolioNichePage({ portfolio, searchParams = {} }) {
+  const locale = useLocale();
+  const t = useTranslations();
   const works = portfolio?.works || [];
   const niches = getNiches(portfolio).filter((niche) => niche?.slug);
   const activeSlug = getNicheSlug(searchParams);
-  const activeLabel = getNicheLabel(niches, activeSlug);
-  const name = getName(portfolio);
-  const title = activeSlug ? `${activeLabel} works` : "Selected portfolio works";
+  const activeLabel = getNicheLabel(niches, activeSlug, t);
+  const name = getName(portfolio, t("writerFallbackName"));
+  const title = activeSlug ? t("portfolioPageFilteredTitle", { label: activeLabel }) : t("portfolioPageSelectedTitle");
   const subtitle = activeSlug
-    ? `A focused selection of ${name}'s public work in ${activeLabel}.`
-    : `A focused index of ${name}'s public works from Copy Vortex.`;
+    ? t("portfolioPageFilteredSubtitle", { name, label: activeLabel })
+    : t("portfolioPageSelectedSubtitle", { name });
 
   return (
     <>
       <Section className="border-b border-border bg-surface-alt" sectionClassName="py-14 md:py-20">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-muted-foreground md:text-xs md:tracking-[0.28em]">
-            Portfolio
+            {t("portfolioPageEyebrow")}
           </p>
           <h1 className="mt-3 text-4xl leading-tight md:text-6xl">{title}</h1>
           <p className="mt-5 text-sm leading-6 text-muted-foreground md:text-base md:leading-7">{subtitle}</p>
@@ -46,14 +50,14 @@ export default function PortfolioNichePage({ portfolio, locale, searchParams = {
               href={`/${locale}`}
               className="rounded-full border border-border bg-card px-4 py-2 text-sm text-muted-foreground transition hover:bg-secondary"
             >
-              Back to portfolio
+              {t("portfolioPageBack")}
             </a>
             {activeSlug ? (
               <a
                 href={`/${locale}/portfolio`}
                 className="rounded-full border border-border bg-card px-4 py-2 text-sm text-muted-foreground transition hover:bg-secondary"
               >
-                All works
+                {t("portfolioPageAllWorks")}
               </a>
             ) : null}
           </div>
@@ -84,11 +88,11 @@ export default function PortfolioNichePage({ portfolio, locale, searchParams = {
 
         {works.length ? (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {works.map((work) => <WorkCard key={work.id || work.slug} work={work} locale={locale} />)}
+            {works.map((work) => <WorkCard key={work.id || work.slug} work={work} />)}
           </div>
         ) : (
           <div className="rounded-[24px] border border-border bg-card p-8 text-center text-muted-foreground">
-            No public works are available for this focus area yet.
+            {t("portfolioPageEmpty")}
           </div>
         )}
       </Section>
@@ -96,6 +100,3 @@ export default function PortfolioNichePage({ portfolio, locale, searchParams = {
     </>
   );
 }
-
-
-

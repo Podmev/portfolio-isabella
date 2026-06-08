@@ -1,6 +1,9 @@
 ﻿import { notFound } from "next/navigation";
+
+import { defaultLocale, supportedLocales } from "@/i18n/config.js";
+import { createTranslator } from "@/i18n/messages.js";
+import { getPortfolioData } from "@/lib/copyVortexClient.js";
 import PortfolioNichePage from "@/components/sections/PortfolioNichePage.jsx";
-import { defaultLocale, getPortfolioData, supportedLocales } from "@/lib/copyVortexClient.js";
 
 export const dynamic = "force-dynamic";
 
@@ -14,8 +17,8 @@ function getFilterValue(searchParams = {}) {
   return Array.isArray(value) ? value[0] : value;
 }
 
-function getNicheLabel(portfolio, slug) {
-  if (!slug) return "Portfolio works";
+function getNicheLabel(portfolio, slug, t) {
+  if (!slug) return t("portfolioWorksMetaTitle");
   const niches = portfolio?.niches || portfolio?.tags?.niches || [];
   const match = niches.find((niche) => niche?.slug === slug);
   return match?.label || slug.replace(/[-_]+/g, " ");
@@ -24,11 +27,12 @@ function getNicheLabel(portfolio, slug) {
 export async function generateMetadata({ params, searchParams }) {
   const resolvedParams = await params;
   const locale = resolveSupportedLocale(resolvedParams?.locale);
+  const t = createTranslator(locale || defaultLocale);
 
   if (!locale) {
     return {
-      title: "Portfolio works",
-      description: "Selected public portfolio works.",
+      title: t("portfolioWorksFallbackTitle"),
+      description: t("portfolioWorksFallbackDescription"),
     };
   }
 
@@ -36,15 +40,15 @@ export async function generateMetadata({ params, searchParams }) {
   const portfolio = await getPortfolioData({ locale, searchParams: resolvedSearchParams });
   const profile = portfolio?.profile || {};
   const user = portfolio?.user || {};
-  const name = profile.publicName || user.name || "Writer";
+  const name = profile.publicName || user.name || t("writerFallbackName");
   const filter = getFilterValue(resolvedSearchParams);
-  const label = getNicheLabel(portfolio, filter);
+  const label = getNicheLabel(portfolio, filter, t);
 
   return {
-    title: filter ? `${label} works | ${name}` : `Portfolio works | ${name}`,
+    title: filter ? `${t("portfolioWorksFilteredMetaTitle", { label })} | ${name}` : `${t("portfolioWorksMetaTitle")} | ${name}`,
     description: filter
-      ? `Selected public ${label} works by ${name}.`
-      : profile.headline || `Selected public portfolio works by ${name}.`,
+      ? t("portfolioWorksFilteredMetaDescription", { label, name })
+      : profile.headline || t("portfolioWorksMetaDescription", { name }),
   };
 }
 
@@ -57,5 +61,5 @@ export default async function PortfolioRoute({ params, searchParams }) {
   const resolvedSearchParams = await searchParams;
   const portfolio = await getPortfolioData({ locale, searchParams: resolvedSearchParams });
 
-  return <PortfolioNichePage portfolio={portfolio} locale={locale} searchParams={resolvedSearchParams} />;
+  return <PortfolioNichePage portfolio={portfolio} searchParams={resolvedSearchParams} />;
 }

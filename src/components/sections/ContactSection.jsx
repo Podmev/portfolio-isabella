@@ -1,4 +1,6 @@
-﻿import Section from "@/components/sections/Section.jsx";
+﻿import { useLocale, useTranslations } from "next-intl";
+
+import Section from "@/components/sections/Section.jsx";
 import SectionTitle from "@/components/sections/SectionTitle.jsx";
 import { getCopyVortexWriterUrl } from "@/lib/copyVortexWriterUrl.js";
 
@@ -13,8 +15,9 @@ function normalizeWhatsapp(value = "") {
   return `https://wa.me/${value.replace(/[^\d+]/g, "").replace(/^\+/, "")}`;
 }
 
-
-export default function ContactSection({ portfolio, locale = "en" }) {
+export default function ContactSection({ portfolio }) {
+  const locale = useLocale();
+  const t = useTranslations();
   const profile = portfolio?.profile || {};
   const contact = profile.contact || {};
   const social = profile.socialLinks || {};
@@ -24,15 +27,15 @@ export default function ContactSection({ portfolio, locale = "en" }) {
 
   return (
     <Section id="contact">
-      <SectionTitle eyebrow="Contact" title="Let's talk about your project" subtitle="For copywriting, editing, translation, or content collaboration." />
+      <SectionTitle eyebrow={t("contactEyebrow")} title={t("contactTitle")} subtitle={t("contactSubtitle")} />
 
       <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
         <div className="rounded-[24px] border border-border bg-surface-soft p-8">
           <div className="space-y-6">
-            {email ? <ContactLink label="Email" href={`mailto:${email}`} value={email} /> : null}
+            {email ? <ContactLink label={t("contactEmail")} href={`mailto:${email}`} value={email} /> : null}
             {contact.whatsapp ? <ContactLink label="WhatsApp" href={normalizeWhatsapp(contact.whatsapp)} value={contact.whatsapp} /> : null}
             {contact.telegram ? <ContactLink label="Telegram" href={normalizeTelegram(contact.telegram)} value={contact.telegram} /> : null}
-            {location ? <ContactText label="Location" value={location} /> : null}
+            {location ? <ContactText label={t("contactLocation")} value={location} /> : null}
           </div>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -44,14 +47,14 @@ export default function ContactSection({ portfolio, locale = "en" }) {
 
         <form action={email ? `mailto:${email}` : undefined} method="post" encType="text/plain" className="rounded-[24px] border border-border bg-card p-8">
           <div className="grid gap-5">
-            <Field id="name" label="Name" placeholder="Name" />
-            <Field id="email" label="Email" type="email" placeholder="Email" />
+            <Field id="name" label={t("contactName")} placeholder={t("contactName")} />
+            <Field id="email" label={t("contactEmail")} type="email" placeholder={t("contactEmail")} />
             <div>
-              <label htmlFor="message" className="mb-2 block text-sm font-medium">Message</label>
-              <textarea id="message" name="message" rows={6} placeholder="Tell me a bit about your project" className="w-full resize-none px-4 py-3" />
+              <label htmlFor="message" className="mb-2 block text-sm font-medium">{t("contactMessage")}</label>
+              <textarea id="message" name="message" rows={6} placeholder={t("contactMessagePlaceholder")} className="w-full resize-none px-4 py-3" />
             </div>
             <button type="submit" disabled={!email} className="inline-flex h-12 items-center justify-center rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50">
-              Send message
+              {t("contactSendMessage")}
             </button>
           </div>
         </form>
@@ -95,4 +98,3 @@ function SocialLink({ href, label }) {
     </a>
   );
 }
-

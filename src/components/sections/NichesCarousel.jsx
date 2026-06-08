@@ -1,22 +1,24 @@
 ﻿"use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
 import { ArrowUpRight, ChevronLeft, ChevronRight, Hash } from "lucide-react";
 
 import { getNicheVisualSrc } from "@/lib/tags/nicheVisuals";
 
-const labels = {
-  eyebrow: "Niches",
-  title: "Explore niches",
-  description: "A focused map of the portfolio by niche.",
-  works: "Works",
-  worksLower: "works",
-  previous: "Previous niches",
-  next: "Next niches",
-  seeAll: "All niches",
-};
-
-export default function NichesCarousel({ niches = [], locale = "en" }) {
+export default function NichesCarousel({ niches = [] }) {
+  const locale = useLocale();
+  const t = useTranslations();
+  const labels = {
+    eyebrow: t("nichesEyebrow"),
+    title: t("nichesTitle"),
+    description: t("nichesDescription"),
+    works: t("nichesWorks"),
+    worksLower: t("nichesWorksLower"),
+    previous: t("nichesPrevious"),
+    next: t("nichesNext"),
+    seeAll: t("nichesSeeAll"),
+  };
   const carouselRef = useRef(null);
   const dragStateRef = useRef({
     active: false,

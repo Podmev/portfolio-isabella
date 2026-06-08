@@ -1,12 +1,11 @@
 ﻿import { notFound } from "next/navigation";
+
+import { defaultLocale, supportedLocales } from "@/i18n/config.js";
+import { createTranslator } from "@/i18n/messages.js";
+import { getPortfolioData } from "@/lib/copyVortexClient.js";
 import PortfolioHome from "@/components/sections/PortfolioHome.jsx";
-import { defaultLocale, getPortfolioData, supportedLocales } from "@/lib/copyVortexClient.js";
 
 export const dynamic = "force-dynamic";
-
-export function generateStaticParams() {
-  return supportedLocales.map((locale) => ({ locale }));
-}
 
 function resolveSupportedLocale(value) {
   const locale = value || defaultLocale;
@@ -16,22 +15,23 @@ function resolveSupportedLocale(value) {
 export async function generateMetadata({ params }) {
   const resolvedParams = await params;
   const locale = resolveSupportedLocale(resolvedParams?.locale);
+  const t = createTranslator(locale || defaultLocale);
 
   if (!locale) {
     return {
-      title: "Portfolio",
-      description: "Writer portfolio.",
+      title: t("portfolioFallbackTitle"),
+      description: t("portfolioFallbackDescription"),
     };
   }
 
   const portfolio = await getPortfolioData({ locale });
   const profile = portfolio?.profile || {};
   const user = portfolio?.user || {};
-  const name = profile.publicName || user.name || "Writer";
+  const name = profile.publicName || user.name || t("writerFallbackName");
 
   return {
-    title: `${name} | Portfolio`,
-    description: profile.headline || "Copywriting, editing, translation, and selected portfolio works.",
+    title: `${name} | ${t("portfolioMetaSuffix")}`,
+    description: profile.headline || t("portfolioMetaDescription"),
   };
 }
 
@@ -44,5 +44,5 @@ export default async function LocaleHomePage({ params, searchParams }) {
   const resolvedSearchParams = await searchParams;
   const portfolio = await getPortfolioData({ locale, searchParams: resolvedSearchParams });
 
-  return <PortfolioHome portfolio={portfolio} locale={locale} />;
+  return <PortfolioHome portfolio={portfolio} />;
 }

@@ -1,4 +1,6 @@
-﻿import Section from "@/components/sections/Section.jsx";
+﻿import { useLocale, useTranslations } from "next-intl";
+
+import Section from "@/components/sections/Section.jsx";
 import SectionTitle from "@/components/sections/SectionTitle.jsx";
 
 function getTagLabel(tag) {
@@ -16,7 +18,9 @@ function getDateLabel(work, locale) {
   }
 }
 
-export function WorkCard({ work, locale }) {
+export function WorkCard({ work }) {
+  const locale = useLocale();
+  const t = useTranslations();
   const tags = [...(work.industries || []), ...(work.formats || []), ...(work.activities || [])]
     .map(getTagLabel)
     .filter(Boolean)
@@ -42,7 +46,7 @@ export function WorkCard({ work, locale }) {
       )}
 
       <div className="flex flex-1 flex-col p-4 sm:p-5">
-        <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">{getDateLabel(work, locale) || context || "Selected work"}</p>
+        <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">{getDateLabel(work, locale) || context || t("workCardFallbackLabel")}</p>
         <h3 className="mt-2 line-clamp-2 text-lg sm:text-xl">{work.title}</h3>
         <div className="flex-1">
           {context ? <p className="mt-2 text-sm leading-6 text-muted-foreground">{context}</p> : null}
@@ -59,20 +63,21 @@ export function WorkCard({ work, locale }) {
   );
 }
 
-export default function WorksSection({ portfolio, locale }) {
+export default function WorksSection({ portfolio }) {
+  const t = useTranslations();
   const works = portfolio?.works || [];
 
   return (
     <Section id="portfolio">
-      <SectionTitle eyebrow="Portfolio" title="Selected works" subtitle="Live public works from Copy Vortex, presented in the same soft editorial style as the original portfolio." />
+      <SectionTitle eyebrow={t("worksEyebrow")} title={t("worksTitle")} subtitle={t("worksSubtitle")} />
 
       {works.length ? (
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {works.slice(0, 9).map((work) => <WorkCard key={work.id || work.slug} work={work} locale={locale} />)}
+          {works.slice(0, 9).map((work) => <WorkCard key={work.id || work.slug} work={work} />)}
         </div>
       ) : (
         <div className="rounded-[24px] border border-border bg-card p-8 text-center text-muted-foreground">
-          Connect Copy Vortex to load public works.
+          {t("worksEmpty")}
         </div>
       )}
     </Section>
@@ -174,4 +179,5 @@ function hashString(value) {
   }
   return hash >>> 0;
 }
+
 
