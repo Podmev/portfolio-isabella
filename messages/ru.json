@@ -29,7 +29,12 @@
   "contactTitle": "Обсудим ваш проект",
   "contactSubtitle": "Для копирайтинга, редактуры, перевода или контент-сотрудничества.",
   "contactEmail": "Email",
+  "contactWhatsapp": "WhatsApp",
+  "contactTelegram": "Telegram",
   "contactLocation": "Локация",
+  "contactInstagram": "Instagram",
+  "contactLinkedin": "LinkedIn",
+  "contactCopyVortex": "Copy Vortex",
   "contactName": "Имя",
   "contactMessage": "Сообщение",
   "contactMessagePlaceholder": "Расскажите немного о проекте",
@@ -62,4 +67,3 @@
   "worksSubtitle": "Публичные работы из Copy Vortex в мягком редакционном стиле исходного портфолио.",
   "worksEmpty": "Подключите Copy Vortex, чтобы загрузить публичные работы."
 }
-

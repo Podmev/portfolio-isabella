@@ -1,4 +1,6 @@
-﻿import { useTranslations } from "next-intl";
+"use client";
+
+import { useTranslations } from "next-intl";
 
 import Section from "@/components/sections/Section.jsx";
 import SectionTitle from "@/components/sections/SectionTitle.jsx";

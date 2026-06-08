@@ -1,4 +1,6 @@
-﻿import { useLocale, useTranslations } from "next-intl";
+"use client";
+
+import { useLocale, useTranslations } from "next-intl";
 
 import Footer from "@/components/Footer.jsx";
 import Section from "@/components/sections/Section.jsx";

@@ -1,4 +1,6 @@
-﻿import { useTranslations } from "next-intl";
+"use client";
+
+import { useTranslations } from "next-intl";
 import { Dancing_Script, Forum } from "next/font/google";
 
 import Section from "@/components/sections/Section.jsx";

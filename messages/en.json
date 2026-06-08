@@ -29,7 +29,12 @@
   "contactTitle": "Let's talk about your project",
   "contactSubtitle": "For copywriting, editing, translation, or content collaboration.",
   "contactEmail": "Email",
+  "contactWhatsapp": "WhatsApp",
+  "contactTelegram": "Telegram",
   "contactLocation": "Location",
+  "contactInstagram": "Instagram",
+  "contactLinkedin": "LinkedIn",
+  "contactCopyVortex": "Copy Vortex",
   "contactName": "Name",
   "contactMessage": "Message",
   "contactMessagePlaceholder": "Tell me a bit about your project",
@@ -62,4 +67,3 @@
   "worksSubtitle": "Live public works from Copy Vortex, presented in the same soft editorial style as the original portfolio.",
   "worksEmpty": "Connect Copy Vortex to load public works."
 }
-

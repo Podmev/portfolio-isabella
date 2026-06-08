@@ -1,4 +1,6 @@
-﻿import { useLocale, useTranslations } from "next-intl";
+"use client";
+
+import { useLocale, useTranslations } from "next-intl";
 
 import Section from "@/components/sections/Section.jsx";
 import SectionTitle from "@/components/sections/SectionTitle.jsx";
@@ -33,15 +35,15 @@ export default function ContactSection({ portfolio }) {
         <div className="rounded-[24px] border border-border bg-surface-soft p-8">
           <div className="space-y-6">
             {email ? <ContactLink label={t("contactEmail")} href={`mailto:${email}`} value={email} /> : null}
-            {contact.whatsapp ? <ContactLink label="WhatsApp" href={normalizeWhatsapp(contact.whatsapp)} value={contact.whatsapp} /> : null}
-            {contact.telegram ? <ContactLink label="Telegram" href={normalizeTelegram(contact.telegram)} value={contact.telegram} /> : null}
+            {contact.whatsapp ? <ContactLink label={t("contactWhatsapp")} href={normalizeWhatsapp(contact.whatsapp)} value={contact.whatsapp} /> : null}
+            {contact.telegram ? <ContactLink label={t("contactTelegram")} href={normalizeTelegram(contact.telegram)} value={contact.telegram} /> : null}
             {location ? <ContactText label={t("contactLocation")} value={location} /> : null}
           </div>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            {social.instagram ? <SocialLink href={social.instagram} label="Instagram" /> : null}
-            {social.linkedin ? <SocialLink href={social.linkedin} label="LinkedIn" /> : null}
-            {copyVortexUrl ? <SocialLink href={copyVortexUrl} label="Copy Vortex" /> : null}
+            {social.instagram ? <SocialLink href={social.instagram} label={t("contactInstagram")} /> : null}
+            {social.linkedin ? <SocialLink href={social.linkedin} label={t("contactLinkedin")} /> : null}
+            {copyVortexUrl ? <SocialLink href={copyVortexUrl} label={t("contactCopyVortex")} /> : null}
           </div>
         </div>
 
