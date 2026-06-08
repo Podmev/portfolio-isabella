@@ -17,6 +17,22 @@ function getHeroImage(portfolio) {
   return profile.showcaseImages?.[0]?.url || profile.bannerImage || portfolio?.user?.image || "";
 }
 
+function getLanguageCode(language) {
+  if (!language) return "";
+  if (typeof language === "string") return language;
+  return language.code || language.locale || language.value || language.slug || "";
+}
+
+function getLanguageBase(language) {
+  const code = getLanguageCode(language).trim().toLowerCase();
+  if (!code) return "";
+  return code.split(/[-_]/)[0];
+}
+
+function countLanguageGroups(languages = []) {
+  return new Set(languages.map(getLanguageBase).filter(Boolean)).size;
+}
+
 export default function Hero({ portfolio, locale }) {
   const profile = portfolio?.profile || {};
   const user = portfolio?.user || {};
@@ -25,7 +41,7 @@ export default function Hero({ portfolio, locale }) {
   const bio = profile.bio || profile.portfolioIntro || "Content specialist with experience in copywriting, translation, and content management for digital marketing projects.";
   const worksCount = portfolio?.summary?.totalPublicWorks || portfolio?.works?.length || 0;
   const nichesCount = portfolio?.summary?.totalPublicNiches || portfolio?.niches?.length || 0;
-  const languageCount = profile.languages?.length || portfolio?.tags?.languages?.length || 0;
+  const languageCount = countLanguageGroups(profile.languages) || countLanguageGroups(portfolio?.tags?.languages) || 0;
 
   return (
     <Section sectionClassName="pt-10 pb-10 md:pb-16" className="section-soft-gradient">
