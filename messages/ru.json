@@ -1,4 +1,4 @@
-{
+﻿{
   "portfolioFallbackTitle": "Портфолио",
   "portfolioFallbackDescription": "Авторское портфолио с избранными работами.",
   "portfolioMetaSuffix": "Портфолио",
@@ -69,7 +69,7 @@
   "heroWorkLocation": "Формат работы",
   "contactWorkLocation": "Формат работы",
   "workLocationMode_remote": "Удаленно",
-  "workLocationMode_global": "Международно и удаленно",
+  "workLocationMode_global": "По всему миру, удаленно",
   "workLocationRegionalDisplay": "Удаленно: {regions}",
   "workRegion_africa": "Африка",
   "workRegion_asia_pacific": "Азиа-Тихоокеанский регион",
@@ -78,3 +78,4 @@
   "workRegion_middle_east": "Ближний Восток",
   "workRegion_north_america": "Северная Америка"
 }
+
