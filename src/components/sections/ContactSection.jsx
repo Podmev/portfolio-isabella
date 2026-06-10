@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 import Section from "@/components/sections/Section.jsx";
 import SectionTitle from "@/components/sections/SectionTitle.jsx";
 import { getCopyVortexWriterUrl } from "@/lib/copyVortexWriterUrl.js";
+import { formatBasedLocation, formatWorkLocation } from "@/lib/profileWorkLocation.js";
 
 function normalizeTelegram(value = "") {
   if (!value) return "";
@@ -24,7 +25,8 @@ export default function ContactSection({ portfolio }) {
   const contact = profile.contact || {};
   const social = profile.socialLinks || {};
   const email = contact.email || "";
-  const location = [profile.location?.city, profile.location?.country].filter(Boolean).join(", ");
+  const location = formatBasedLocation(profile.location);
+  const workLocation = formatWorkLocation(profile.workLocation, t);
   const copyVortexUrl = getCopyVortexWriterUrl(portfolio, locale);
 
   return (
@@ -38,6 +40,7 @@ export default function ContactSection({ portfolio }) {
             {contact.whatsapp ? <ContactLink label={t("contactWhatsapp")} href={normalizeWhatsapp(contact.whatsapp)} value={contact.whatsapp} /> : null}
             {contact.telegram ? <ContactLink label={t("contactTelegram")} href={normalizeTelegram(contact.telegram)} value={contact.telegram} /> : null}
             {location ? <ContactText label={t("contactLocation")} value={location} /> : null}
+            {workLocation ? <ContactText label={t("contactWorkLocation")} value={workLocation} /> : null}
           </div>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">

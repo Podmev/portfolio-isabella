@@ -65,5 +65,16 @@
   "worksEyebrow": "Portafolio",
   "worksTitle": "Trabajos seleccionados",
   "worksSubtitle": "Trabajos públicos de Copy Vortex, presentados con el mismo estilo editorial suave del portafolio original.",
-  "worksEmpty": "Conecta Copy Vortex para cargar trabajos públicos."
+  "worksEmpty": "Conecta Copy Vortex para cargar trabajos públicos.",
+  "heroWorkLocation": "Disponibilidad de trabajo",
+  "contactWorkLocation": "Disponibilidad de trabajo",
+  "workLocationMode_remote": "Remoto",
+  "workLocationMode_global": "Internacional y remoto",
+  "workLocationRegionalDisplay": "Remoto: {regions}",
+  "workRegion_africa": "África",
+  "workRegion_asia_pacific": "Asia-Pacífico",
+  "workRegion_europe": "Europa",
+  "workRegion_latin_america": "América Latina",
+  "workRegion_middle_east": "Oriente Medio",
+  "workRegion_north_america": "Norteamérica"
 }

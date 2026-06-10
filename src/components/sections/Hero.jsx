@@ -5,6 +5,7 @@ import { Dancing_Script, Forum } from "next/font/google";
 
 import Section from "@/components/sections/Section.jsx";
 import PortfolioPortrait from "@/components/sections/PortfolioPortrait.jsx";
+import { formatWorkLocation } from "@/lib/profileWorkLocation.js";
 
 const dancingScript = Dancing_Script({
   subsets: ["latin"],
@@ -47,6 +48,7 @@ export default function Hero({ portfolio }) {
   const worksCount = portfolio?.summary?.totalPublicWorks || portfolio?.works?.length || 0;
   const nichesCount = portfolio?.summary?.totalPublicNiches || portfolio?.niches?.length || 0;
   const languageCount = countLanguageGroups(profile.languages) || countLanguageGroups(portfolio?.tags?.languages) || 0;
+  const workLocation = formatWorkLocation(profile.workLocation, t);
 
   return (
     <Section sectionClassName="pt-10 pb-10 md:pb-16" className="section-soft-gradient">
@@ -78,6 +80,13 @@ export default function Hero({ portfolio }) {
               <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">{t("heroLanguages")}</p>
             </div>
           </div>
+
+          {workLocation ? (
+            <div className="rounded-[18px] border border-border bg-card/70 px-4 py-3 text-center sm:text-left">
+              <p className="text-sm font-semibold">{workLocation}</p>
+              <p className="mt-1 text-xs uppercase tracking-[0.16em] text-muted-foreground">{t("heroWorkLocation")}</p>
+            </div>
+          ) : null}
 
           <div className="flex gap-5 md:pt-1">
             <a href="#portfolio" className="inline-flex flex-1 items-center justify-center rounded-full bg-primary px-4 py-3 text-center text-sm font-medium text-primary-foreground transition hover:opacity-90 sm:flex-none sm:px-6">

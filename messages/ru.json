@@ -65,5 +65,16 @@
   "worksEyebrow": "Портфолио",
   "worksTitle": "Избранные работы",
   "worksSubtitle": "Публичные работы из Copy Vortex в мягком редакционном стиле исходного портфолио.",
-  "worksEmpty": "Подключите Copy Vortex, чтобы загрузить публичные работы."
+  "worksEmpty": "Подключите Copy Vortex, чтобы загрузить публичные работы.",
+  "heroWorkLocation": "География работы",
+  "contactWorkLocation": "География работы",
+  "workLocationMode_remote": "Удаленно",
+  "workLocationMode_global": "Международно и удаленно",
+  "workLocationRegionalDisplay": "Удаленно: {regions}",
+  "workRegion_africa": "Африка",
+  "workRegion_asia_pacific": "Азиа-Тихоокеанский регион",
+  "workRegion_europe": "Европа",
+  "workRegion_latin_america": "Латинская Америка",
+  "workRegion_middle_east": "Ближний Восток",
+  "workRegion_north_america": "Северная Америка"
 }

@@ -65,5 +65,16 @@
   "worksEyebrow": "Portfolio",
   "worksTitle": "Selected works",
   "worksSubtitle": "Live public works from Copy Vortex, presented in the same soft editorial style as the original portfolio.",
-  "worksEmpty": "Connect Copy Vortex to load public works."
+  "worksEmpty": "Connect Copy Vortex to load public works.",
+  "heroWorkLocation": "Work availability",
+  "contactWorkLocation": "Work availability",
+  "workLocationMode_remote": "Remote",
+  "workLocationMode_global": "International & remote",
+  "workLocationRegionalDisplay": "Remote: {regions}",
+  "workRegion_africa": "Africa",
+  "workRegion_asia_pacific": "Asia-Pacific",
+  "workRegion_europe": "Europe",
+  "workRegion_latin_america": "Latin America",
+  "workRegion_middle_east": "Middle East",
+  "workRegion_north_america": "North America"
 }
