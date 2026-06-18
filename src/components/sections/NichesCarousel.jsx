@@ -173,7 +173,7 @@ export default function NichesCarousel({ niches = [] }) {
             <a
               key={niche.id || niche.slug}
               data-niche-card
-              href={`/${locale}/portfolio?industry=${encodeURIComponent(niche.slug)}`}
+              href={`/${locale}/portfolio?niche=${encodeURIComponent(niche.slug)}`}
               className="group relative aspect-[1.08/1] w-[11.25rem] shrink-0 overflow-hidden rounded-[26px] border border-white/45 bg-[var(--writer-surface-soft)] shadow-[0_12px_34px_rgba(15,23,42,0.12)] ring-1 ring-black/5 transition duration-300 hover:-translate-y-1 hover:shadow-[0_22px_54px_rgba(15,23,42,0.18)] sm:w-[13.25rem]"
               draggable={false}
               onClick={preventClickAfterDrag}

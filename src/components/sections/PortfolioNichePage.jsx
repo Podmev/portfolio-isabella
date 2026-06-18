@@ -74,7 +74,7 @@ export default function PortfolioNichePage({ portfolio, searchParams = {} }) {
               return (
                 <a
                   key={niche.slug}
-                  href={`/${locale}/portfolio?industry=${encodeURIComponent(niche.slug)}`}
+                  href={`/${locale}/portfolio?niche=${encodeURIComponent(niche.slug)}`}
                   className={`rounded-full border px-4 py-2 text-sm transition ${
                     isActive
                       ? "border-primary bg-primary text-primary-foreground"
