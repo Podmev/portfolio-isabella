@@ -87,9 +87,9 @@ function PortfolioHeader({ locale, filter, t }) {
   const title = filter ? t("portfolioPageFilteredTitle", { label }) : t("portfolioPageSelectedTitle");
 
   return (
-    <section className="border-b border-border bg-surface-alt py-14 md:py-20">
+    <section className="border-b border-border bg-surface-alt py-8 md:py-10">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="mb-8 flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
+        <div className="mb-5 flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
           <Link
             href={withActiveLocalePath("/", locale)}
             className="inline-flex items-center gap-1.5 transition hover:text-foreground"
@@ -108,11 +108,11 @@ function PortfolioHeader({ locale, filter, t }) {
           ) : null}
         </div>
 
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-muted-foreground md:text-xs md:tracking-[0.28em]">
+        <div className="max-w-3xl">
+          <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground md:text-xs md:tracking-[0.22em]">
             {t("portfolioPageEyebrow")}
           </p>
-          <h1 className="mt-3 text-4xl leading-tight md:text-6xl">{title}</h1>
+          <h1 className="mt-2 text-3xl leading-tight md:text-4xl">{title}</h1>
         </div>
       </div>
     </section>
