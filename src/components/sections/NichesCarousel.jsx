@@ -20,16 +20,8 @@ export default function NichesCarousel({ niches = [] }) {
     seeAll: t("nichesSeeAll"),
   };
   const carouselRef = useRef(null);
-  const dragStateRef = useRef({
-    active: false,
-    pointerId: null,
-    startX: 0,
-    startScrollLeft: 0,
-    moved: false,
-  });
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
-  const [isDragging, setIsDragging] = useState(false);
   const visibleNiches = niches.filter((niche) => niche?.slug && Number(niche?.count || 0) > 0);
 
   useEffect(() => {
@@ -63,64 +55,6 @@ export default function NichesCarousel({ niches = [] }) {
       left: direction * (cardWidth + 18) * 2,
       behavior: "smooth",
     });
-  }
-
-  function handlePointerDown(event) {
-    if (event.button !== undefined && event.button !== 0) return;
-    const element = carouselRef.current;
-    if (!element) return;
-
-    dragStateRef.current = {
-      active: true,
-      pointerId: event.pointerId,
-      startX: event.clientX,
-      startScrollLeft: element.scrollLeft,
-      moved: false,
-    };
-    element.setPointerCapture?.(event.pointerId);
-  }
-
-  function handlePointerMove(event) {
-    const state = dragStateRef.current;
-    const element = carouselRef.current;
-    if (!state.active || !element) return;
-
-    const deltaX = event.clientX - state.startX;
-    if (Math.abs(deltaX) > 4) {
-      state.moved = true;
-      setIsDragging(true);
-    }
-    element.scrollLeft = state.startScrollLeft - deltaX;
-  }
-
-  function stopDragging(event) {
-    const state = dragStateRef.current;
-    const element = carouselRef.current;
-    if (!state.active) return;
-
-    element?.releasePointerCapture?.(state.pointerId || event.pointerId);
-    dragStateRef.current = {
-      active: false,
-      pointerId: null,
-      startX: 0,
-      startScrollLeft: 0,
-      moved: state.moved,
-    };
-
-    if (state.moved) {
-      window.setTimeout(() => {
-        dragStateRef.current.moved = false;
-        setIsDragging(false);
-      }, 0);
-    } else {
-      setIsDragging(false);
-    }
-  }
-
-  function preventClickAfterDrag(event) {
-    if (!dragStateRef.current.moved) return;
-    event.preventDefault();
-    event.stopPropagation();
   }
 
   return (
@@ -161,14 +95,9 @@ export default function NichesCarousel({ niches = [] }) {
 
         <div
           ref={carouselRef}
-          className={`flex touch-pan-y gap-4 overflow-x-auto px-[3.25rem] py-2 [mask-image:linear-gradient(to_right,transparent,black_56px,black_calc(100%-56px),transparent)] [scrollbar-width:none] sm:gap-5 sm:px-[5rem] sm:[mask-image:linear-gradient(to_right,transparent,black_88px,black_calc(100%-88px),transparent)] [&::-webkit-scrollbar]:hidden ${isDragging ? "cursor-grabbing select-none" : "cursor-grab"}`}
+          className="flex gap-4 overflow-x-auto px-[3.25rem] py-2 [mask-image:linear-gradient(to_right,transparent,black_56px,black_calc(100%-56px),transparent)] [scrollbar-width:none] sm:gap-5 sm:px-[5rem] sm:[mask-image:linear-gradient(to_right,transparent,black_88px,black_calc(100%-88px),transparent)] [&::-webkit-scrollbar]:hidden"
           tabIndex={0}
           aria-label={labels.title}
-          onPointerDown={handlePointerDown}
-          onPointerMove={handlePointerMove}
-          onPointerUp={stopDragging}
-          onPointerCancel={stopDragging}
-          onPointerLeave={stopDragging}
         >
           {visibleNiches.map((niche) => (
             <a
@@ -177,7 +106,6 @@ export default function NichesCarousel({ niches = [] }) {
               href={`/${locale}/portfolio?niche=${encodeURIComponent(niche.slug)}`}
               className="group relative aspect-[1.08/1] w-[11.25rem] shrink-0 overflow-hidden rounded-[26px] border border-white/45 bg-[var(--writer-surface-soft)] shadow-[0_12px_34px_rgba(15,23,42,0.12)] ring-1 ring-black/5 transition duration-300 hover:-translate-y-1 hover:shadow-[0_22px_54px_rgba(15,23,42,0.18)] sm:w-[13.25rem]"
               draggable={false}
-              onClick={preventClickAfterDrag}
             >
               <img
                 src={getNicheVisualSrc(niche.slug)}
