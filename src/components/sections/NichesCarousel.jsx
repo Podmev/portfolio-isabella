@@ -4,10 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { ArrowUpRight, ChevronLeft, ChevronRight, Hash } from "lucide-react";
 
+import { getActiveLocale } from "@/i18n/publicLocale.js";
 import { getNicheVisualSrc } from "@/lib/tags/nicheVisuals";
 
 export default function NichesCarousel({ niches = [] }) {
-  const locale = useLocale();
+  const locale = getActiveLocale(useLocale());
   const t = useTranslations();
   const labels = {
     eyebrow: t("nichesEyebrow"),

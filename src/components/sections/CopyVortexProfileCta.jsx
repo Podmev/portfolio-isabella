@@ -2,6 +2,7 @@
 
 import { useLocale, useTranslations } from "next-intl";
 
+import { getActiveLocale } from "@/i18n/publicLocale.js";
 import { getCopyVortexWriterUrl } from "@/lib/copyVortexWriterUrl.js";
 
 function getWriterName(portfolio, fallback) {
@@ -9,7 +10,7 @@ function getWriterName(portfolio, fallback) {
 }
 
 export default function CopyVortexProfileCta({ portfolio }) {
-  const locale = useLocale();
+  const locale = getActiveLocale(useLocale());
   const t = useTranslations();
   const href = getCopyVortexWriterUrl(portfolio, locale);
   if (!href) return null;

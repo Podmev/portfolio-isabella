@@ -4,6 +4,7 @@ import { useLocale, useTranslations } from "next-intl";
 
 import Section from "@/components/sections/Section.jsx";
 import SectionTitle from "@/components/sections/SectionTitle.jsx";
+import { getActiveLocale } from "@/i18n/publicLocale.js";
 import { getCopyVortexWriterUrl } from "@/lib/copyVortexWriterUrl.js";
 import { formatBasedLocation, formatWorkLocation } from "@/lib/profileWorkLocation.js";
 
@@ -19,7 +20,7 @@ function normalizeWhatsapp(value = "") {
 }
 
 export default function ContactSection({ portfolio }) {
-  const locale = useLocale();
+  const locale = getActiveLocale(useLocale());
   const t = useTranslations();
   const profile = portfolio?.profile || {};
   const contact = profile.contact || {};

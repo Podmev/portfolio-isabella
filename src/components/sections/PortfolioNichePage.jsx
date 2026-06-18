@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 import Footer from "@/components/Footer.jsx";
 import Section from "@/components/sections/Section.jsx";
 import { WorkCard } from "@/components/sections/WorksSection.jsx";
+import { getActiveLocale } from "@/i18n/publicLocale.js";
 
 function getNiches(portfolio) {
   return portfolio?.niches || portfolio?.tags?.niches || [];
@@ -26,7 +27,7 @@ function getName(portfolio, fallback) {
 }
 
 export default function PortfolioNichePage({ portfolio, searchParams = {} }) {
-  const locale = useLocale();
+  const locale = getActiveLocale(useLocale());
   const t = useTranslations();
   const works = portfolio?.works || [];
   const niches = getNiches(portfolio).filter((niche) => niche?.slug);

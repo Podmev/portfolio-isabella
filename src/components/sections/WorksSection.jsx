@@ -2,6 +2,7 @@
 
 import { useLocale, useTranslations } from "next-intl";
 
+import { getActiveLocale } from "@/i18n/publicLocale.js";
 import Section from "@/components/sections/Section.jsx";
 import SectionTitle from "@/components/sections/SectionTitle.jsx";
 
@@ -21,7 +22,7 @@ function getDateLabel(work, locale) {
 }
 
 export function WorkCard({ work }) {
-  const locale = useLocale();
+  const locale = getActiveLocale(useLocale());
   const t = useTranslations();
   const tags = [...(work.industries || []), ...(work.formats || []), ...(work.activities || [])]
     .map(getTagLabel)
