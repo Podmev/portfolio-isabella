@@ -1,4 +1,5 @@
 export const supportedLocales = ["en", "pt", "es", "ru"];
+export const activeLocales = ["en"];
 export const defaultLocale = "en";
 
 export const localeNames = {

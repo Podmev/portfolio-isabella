@@ -1,6 +1,6 @@
 ﻿import { notFound } from "next/navigation";
 
-import { defaultLocale, supportedLocales } from "@/i18n/config.js";
+import { activeLocales, defaultLocale } from "@/i18n/config.js";
 import { createTranslator } from "@/i18n/messages.js";
 import { getPortfolioData } from "@/lib/copyVortexClient.js";
 import PortfolioHome from "@/components/sections/PortfolioHome.jsx";
@@ -9,7 +9,7 @@ export const dynamic = "force-dynamic";
 
 function resolveSupportedLocale(value) {
   const locale = value || defaultLocale;
-  return supportedLocales.includes(locale) ? locale : null;
+  return activeLocales.includes(locale) ? locale : null;
 }
 
 export async function generateMetadata({ params }) {

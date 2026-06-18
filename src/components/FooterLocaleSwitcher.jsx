@@ -3,7 +3,7 @@
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-import { localeNames, supportedLocales } from "@/i18n/config.js";
+import { activeLocales, localeNames } from "@/i18n/config.js";
 
 export default function FooterLocaleSwitcher() {
   const locale = useLocale();
@@ -12,10 +12,12 @@ export default function FooterLocaleSwitcher() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
+  if (activeLocales.length <= 1) return null;
+
   function changeLocale(nextLocale) {
     if (!nextLocale || nextLocale === locale) return;
     const segments = (pathname || `/${locale}`).split("/");
-    if (supportedLocales.includes(segments[1])) {
+    if (activeLocales.includes(segments[1])) {
       segments[1] = nextLocale;
     } else {
       segments.splice(1, 0, nextLocale);
@@ -32,7 +34,7 @@ export default function FooterLocaleSwitcher() {
         onChange={(event) => changeLocale(event.target.value)}
         className="h-9 rounded-full border border-border bg-card px-3 text-sm text-foreground outline-none transition hover:bg-secondary"
       >
-        {supportedLocales.map((item) => (
+        {activeLocales.map((item) => (
           <option key={item} value={item}>{localeNames[item] || item.toUpperCase()}</option>
         ))}
       </select>

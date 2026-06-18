@@ -1,9 +1,9 @@
 import createMiddleware from "next-intl/middleware";
 
-import { defaultLocale, supportedLocales } from "@/i18n/config.js";
+import { activeLocales, defaultLocale } from "@/i18n/config.js";
 
 const intlMiddleware = createMiddleware({
-  locales: supportedLocales,
+  locales: activeLocales,
   defaultLocale,
   localePrefix: "always",
   localeDetection: true,
