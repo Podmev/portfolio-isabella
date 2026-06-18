@@ -22,7 +22,7 @@ export default function CopyVortexProfileCta({ portfolio }) {
         <div className="max-w-2xl">
           <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-muted-foreground">{t("copyVortexEyebrow")}</p>
           <h2 className="mt-2 text-2xl leading-tight md:text-3xl">{t("copyVortexTitle")}</h2>
-          <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
+          <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base md:leading-7">
             {t("copyVortexDescription", { name })}
           </p>
         </div>
