@@ -14,7 +14,6 @@ export default function NichesCarousel({ niches = [] }) {
     title: t("nichesTitle"),
     description: t("nichesDescription"),
     works: t("nichesWorks"),
-    worksLower: t("nichesWorksLower"),
     previous: t("nichesPrevious"),
     next: t("nichesNext"),
     seeAll: t("nichesSeeAll"),
@@ -188,10 +187,6 @@ export default function NichesCarousel({ niches = [] }) {
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_22%_18%,rgba(255,255,255,0.52),transparent_32%),linear-gradient(to_top,rgba(15,23,42,0.74),rgba(15,23,42,0.28)_42%,rgba(255,255,255,0.04))]" />
               <div className="absolute inset-x-0 bottom-0 p-4 text-white drop-shadow-sm">
                 <div className="line-clamp-2 text-lg font-semibold leading-tight">{niche.label || niche.slug}</div>
-                <div className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-white/18 px-2.5 py-1 text-xs font-semibold text-white ring-1 ring-white/20 backdrop-blur-md">
-                  <span>{niche.count}</span>
-                  <span>{labels.worksLower}</span>
-                </div>
               </div>
             </a>
           ))}
