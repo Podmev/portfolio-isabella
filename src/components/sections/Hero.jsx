@@ -69,24 +69,24 @@ export default function Hero({ portfolio }) {
           <div className="grid gap-3 text-center sm:grid-cols-3 sm:text-left">
             <div className="rounded-[18px] border border-border bg-card/70 px-4 py-3">
               <p className="text-2xl font-semibold">{worksCount}</p>
-              <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">{t("heroWorks")}</p>
+              <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">{t("heroWorks", { count: worksCount })}</p>
             </div>
             <div className="rounded-[18px] border border-border bg-card/70 px-4 py-3">
               <p className="text-2xl font-semibold">{nichesCount}</p>
-              <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">{t("heroNiches")}</p>
+              <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">{t("heroNiches", { count: nichesCount })}</p>
             </div>
             <div className="rounded-[18px] border border-border bg-card/70 px-4 py-3">
               <p className="text-2xl font-semibold">{languageCount}</p>
-              <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">{t("heroLanguages")}</p>
+              <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">{t("heroLanguages", { count: languageCount })}</p>
             </div>
-          </div>
 
-          {workLocation ? (
-            <div className="rounded-[18px] border border-border bg-card/70 px-4 py-3 text-center sm:text-left">
-              <p className="text-sm font-semibold">{workLocation}</p>
-              <p className="mt-1 text-xs uppercase tracking-[0.16em] text-muted-foreground">{t("heroWorkLocation")}</p>
-            </div>
-          ) : null}
+            {workLocation ? (
+              <div className="rounded-[18px] border border-border bg-card/70 px-4 py-3 sm:col-span-3">
+                <p className="text-sm font-semibold">{workLocation}</p>
+                <p className="mt-1 text-xs uppercase tracking-[0.16em] text-muted-foreground">{t("heroWorkLocation")}</p>
+              </div>
+            ) : null}
+          </div>
 
           <div className="flex gap-5 md:pt-1">
             <a href="#portfolio" className="inline-flex flex-1 items-center justify-center rounded-full bg-primary px-4 py-3 text-center text-sm font-medium text-primary-foreground transition hover:opacity-90 sm:flex-none sm:px-6">
