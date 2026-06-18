@@ -34,9 +34,7 @@ export default function PortfolioNichePage({ portfolio, searchParams = {} }) {
   const activeLabel = getNicheLabel(niches, activeSlug, t);
   const name = getName(portfolio, t("writerFallbackName"));
   const title = activeSlug ? t("portfolioPageFilteredTitle", { label: activeLabel }) : t("portfolioPageSelectedTitle");
-  const subtitle = activeSlug
-    ? t("portfolioPageFilteredSubtitle", { name, label: activeLabel })
-    : t("portfolioPageSelectedSubtitle", { name });
+  const subtitle = activeSlug ? "" : t("portfolioPageSelectedSubtitle", { name });
 
   return (
     <>
@@ -46,7 +44,9 @@ export default function PortfolioNichePage({ portfolio, searchParams = {} }) {
             {t("portfolioPageEyebrow")}
           </p>
           <h1 className="mt-3 text-4xl leading-tight md:text-6xl">{title}</h1>
-          <p className="mt-5 text-sm leading-6 text-muted-foreground md:text-base md:leading-7">{subtitle}</p>
+          {subtitle ? (
+            <p className="mt-5 text-sm leading-6 text-muted-foreground md:text-base md:leading-7">{subtitle}</p>
+          ) : null}
           <div className="mt-7 flex flex-wrap justify-center gap-2">
             <a
               href={`/${locale}`}

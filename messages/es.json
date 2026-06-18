@@ -57,7 +57,6 @@
   "portfolioPageSelectedTitle": "Trabajos seleccionados",
   "portfolioPageFilteredTitle": "Trabajos de {label}",
   "portfolioPageSelectedSubtitle": "Un índice enfocado de los trabajos públicos de {name} desde Copy Vortex.",
-  "portfolioPageFilteredSubtitle": "Una selección enfocada de los trabajos públicos de {name} en {label}.",
   "portfolioPageBack": "Volver al portafolio",
   "portfolioPageAllWorks": "Todos los trabajos",
   "portfolioPageEmpty": "Todavía no hay trabajos públicos disponibles para esta área.",

@@ -57,7 +57,6 @@
   "portfolioPageSelectedTitle": "Selected portfolio works",
   "portfolioPageFilteredTitle": "{label} works",
   "portfolioPageSelectedSubtitle": "A focused index of {name}'s public works from Copy Vortex.",
-  "portfolioPageFilteredSubtitle": "A focused selection of {name}'s public work in {label}.",
   "portfolioPageBack": "Back to portfolio",
   "portfolioPageAllWorks": "All works",
   "portfolioPageEmpty": "No public works are available for this focus area yet.",
