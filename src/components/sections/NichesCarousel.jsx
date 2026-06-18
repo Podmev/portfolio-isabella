@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { ArrowUpRight, ChevronLeft, ChevronRight, Hash } from "lucide-react";
 
@@ -72,13 +73,13 @@ export default function NichesCarousel({ niches = [] }) {
         </div>
 
         <div className="flex justify-center sm:justify-end">
-          <a
+          <Link
             href={withActiveLocalePath("/portfolio", locale)}
             className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2.5 text-sm font-medium text-foreground shadow-sm transition hover:-translate-y-0.5 hover:bg-secondary"
           >
             {labels.seeAll || labels.works}
             <ArrowUpRight className="h-4 w-4" />
-          </a>
+          </Link>
         </div>
       </div>
 
@@ -99,26 +100,30 @@ export default function NichesCarousel({ niches = [] }) {
           tabIndex={0}
           aria-label={labels.title}
         >
-          {visibleNiches.map((niche) => (
-            <a
-              key={niche.id || niche.slug}
-              data-niche-card
-              href={withActiveLocalePath(`/portfolio?industry=${encodeURIComponent(niche.slug)}`, locale)}
-              className="group relative aspect-[1.08/1] w-[11.25rem] shrink-0 overflow-hidden rounded-[26px] border border-white/45 bg-[var(--writer-surface-soft)] shadow-[0_12px_34px_rgba(15,23,42,0.12)] ring-1 ring-black/5 transition duration-300 hover:-translate-y-1 hover:shadow-[0_22px_54px_rgba(15,23,42,0.18)] sm:w-[13.25rem]"
-              draggable={false}
-            >
-              <img
-                src={getNicheVisualSrc(niche.slug)}
-                alt=""
-                className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+          {visibleNiches.map((niche) => {
+            const href = withActiveLocalePath(`/portfolio?industry=${encodeURIComponent(niche.slug)}`, locale);
+
+            return (
+              <Link
+                key={niche.id || niche.slug}
+                data-niche-card
+                href={href}
+                className="group relative aspect-[1.08/1] w-[11.25rem] shrink-0 overflow-hidden rounded-[26px] border border-white/45 bg-[var(--writer-surface-soft)] shadow-[0_12px_34px_rgba(15,23,42,0.12)] ring-1 ring-black/5 transition duration-300 hover:-translate-y-1 hover:shadow-[0_22px_54px_rgba(15,23,42,0.18)] sm:w-[13.25rem]"
                 draggable={false}
-              />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_22%_18%,rgba(255,255,255,0.52),transparent_32%),linear-gradient(to_top,rgba(15,23,42,0.74),rgba(15,23,42,0.28)_42%,rgba(255,255,255,0.04))]" />
-              <div className="absolute inset-x-0 bottom-0 p-4 text-white drop-shadow-sm">
-                <div className="line-clamp-2 text-lg font-semibold leading-tight">{niche.label || niche.slug}</div>
-              </div>
-            </a>
-          ))}
+              >
+                <img
+                  src={getNicheVisualSrc(niche.slug)}
+                  alt=""
+                  className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                  draggable={false}
+                />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_22%_18%,rgba(255,255,255,0.52),transparent_32%),linear-gradient(to_top,rgba(15,23,42,0.74),rgba(15,23,42,0.28)_42%,rgba(255,255,255,0.04))]" />
+                <div className="absolute inset-x-0 bottom-0 p-4 text-white drop-shadow-sm">
+                  <div className="line-clamp-2 text-lg font-semibold leading-tight">{niche.label || niche.slug}</div>
+                </div>
+              </Link>
+            );
+          })}
         </div>
 
         <button

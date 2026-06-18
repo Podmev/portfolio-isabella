@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 
 import Footer from "@/components/Footer.jsx";
@@ -49,19 +50,19 @@ export default function PortfolioNichePage({ portfolio, searchParams = {} }) {
             <p className="mt-5 text-sm leading-6 text-muted-foreground md:text-base md:leading-7">{subtitle}</p>
           ) : null}
           <div className="mt-7 flex flex-wrap justify-center gap-2">
-            <a
+            <Link
               href={withActiveLocalePath("/", locale)}
               className="rounded-full border border-border bg-card px-4 py-2 text-sm text-muted-foreground transition hover:bg-secondary"
             >
               {t("portfolioPageBack")}
-            </a>
+            </Link>
             {activeSlug ? (
-              <a
+              <Link
                 href={withActiveLocalePath("/portfolio", locale)}
                 className="rounded-full border border-border bg-card px-4 py-2 text-sm text-muted-foreground transition hover:bg-secondary"
               >
                 {t("portfolioPageAllWorks")}
-              </a>
+              </Link>
             ) : null}
           </div>
         </div>
@@ -73,7 +74,7 @@ export default function PortfolioNichePage({ portfolio, searchParams = {} }) {
             {niches.slice(0, 18).map((niche) => {
               const isActive = niche.slug === activeSlug;
               return (
-                <a
+                <Link
                   key={niche.slug}
                   href={withActiveLocalePath(`/portfolio?industry=${encodeURIComponent(niche.slug)}`, locale)}
                   className={`rounded-full border px-4 py-2 text-sm transition ${
@@ -83,7 +84,7 @@ export default function PortfolioNichePage({ portfolio, searchParams = {} }) {
                   }`}
                 >
                   {niche.label || niche.slug}
-                </a>
+                </Link>
               );
             })}
           </div>
