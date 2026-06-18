@@ -1,6 +1,7 @@
 import createMiddleware from "next-intl/middleware";
+import { NextResponse } from "next/server";
 
-import { activeLocales, defaultLocale } from "@/i18n/config.js";
+import { activeLocales, defaultLocale, supportedLocales } from "@/i18n/config.js";
 
 const intlMiddleware = createMiddleware({
   locales: activeLocales,
@@ -10,5 +11,14 @@ const intlMiddleware = createMiddleware({
 });
 
 export function handleI18n(request) {
+  const { pathname } = request.nextUrl;
+  const [, firstSegment = "", ...restSegments] = pathname.split("/");
+
+  if (supportedLocales.includes(firstSegment) && !activeLocales.includes(firstSegment)) {
+    const url = request.nextUrl.clone();
+    url.pathname = `/${[defaultLocale, ...restSegments].filter(Boolean).join("/")}`;
+    return NextResponse.redirect(url);
+  }
+
   return intlMiddleware(request);
 }
