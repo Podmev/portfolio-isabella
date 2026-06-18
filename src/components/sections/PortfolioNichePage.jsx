@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
-import { ArrowLeft, LayoutGrid } from "lucide-react";
 
 import Footer from "@/components/Footer.jsx";
 import Section from "@/components/sections/Section.jsx";
@@ -18,60 +17,15 @@ function getNicheSlug(searchParams = {}) {
   return Array.isArray(value) ? value[0] : value;
 }
 
-function getNicheLabel(niches, slug, t) {
-  if (!slug) return t("portfolioWorksMetaTitle");
-  const match = niches.find((niche) => niche?.slug === slug);
-  return match?.label || slug.replace(/[-_]+/g, " ");
-}
-
-function getName(portfolio, fallback) {
-  return portfolio?.profile?.publicName || portfolio?.user?.name || fallback;
-}
-
 export default function PortfolioNichePage({ portfolio, searchParams = {} }) {
   const locale = getActiveLocale(useLocale());
   const t = useTranslations();
   const works = portfolio?.works || [];
   const niches = getNiches(portfolio).filter((niche) => niche?.slug);
   const activeSlug = getNicheSlug(searchParams);
-  const activeLabel = getNicheLabel(niches, activeSlug, t);
-  const name = getName(portfolio, t("writerFallbackName"));
-  const title = activeSlug ? t("portfolioPageFilteredTitle", { label: activeLabel }) : t("portfolioPageSelectedTitle");
-  const subtitle = activeSlug ? "" : t("portfolioPageSelectedSubtitle", { name });
 
   return (
     <>
-      <Section className="border-b border-border bg-surface-alt" sectionClassName="py-14 md:py-20">
-        <div className="mb-8 flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
-          <Link
-            href={withActiveLocalePath("/", locale)}
-            className="inline-flex items-center gap-1.5 transition hover:text-foreground"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            {t("portfolioPageBack")}
-          </Link>
-          {activeSlug ? (
-            <Link
-              href={withActiveLocalePath("/portfolio", locale)}
-              className="inline-flex items-center gap-1.5 transition hover:text-foreground"
-            >
-              <LayoutGrid className="h-4 w-4" />
-              {t("portfolioPageAllWorks")}
-            </Link>
-          ) : null}
-        </div>
-
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-muted-foreground md:text-xs md:tracking-[0.28em]">
-            {t("portfolioPageEyebrow")}
-          </p>
-          <h1 className="mt-3 text-4xl leading-tight md:text-6xl">{title}</h1>
-          {subtitle ? (
-            <p className="mt-5 text-sm leading-6 text-muted-foreground md:text-base md:leading-7">{subtitle}</p>
-          ) : null}
-        </div>
-      </Section>
-
       <Section id="works" sectionClassName="py-12 md:py-16">
         {niches.length ? (
           <div className="mb-8 flex flex-wrap justify-center gap-2">
