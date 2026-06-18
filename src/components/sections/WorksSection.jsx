@@ -6,6 +6,8 @@ import { getActiveLocale, withActiveLocalePath } from "@/i18n/publicLocale.js";
 import Section from "@/components/sections/Section.jsx";
 import SectionTitle from "@/components/sections/SectionTitle.jsx";
 
+const GENERATED_COVER_TEMPLATE_COUNT = 36;
+
 function getTagLabel(tag) {
   return typeof tag === "string" ? tag : tag?.label || tag?.slug || "";
 }
@@ -90,20 +92,30 @@ export default function WorksSection({ portfolio }) {
 function getGeneratedCover(work) {
   const companyKey = work.company?.slug || work.company?.name || "";
   const projectKey = work.project?.slug || work.project?.name || "";
-  const seed = companyKey || projectKey || work.title || "work";
+  const tagKey = [...(work.industries || []), ...(work.formats || []), ...(work.activities || [])]
+    .map((tag) => typeof tag === "string" ? tag : tag?.slug || tag?.label || "")
+    .filter(Boolean)
+    .join("|");
+  const seed = [
+    work.id || work.slug || "",
+    work.title || "",
+    companyKey,
+    projectKey,
+    tagKey
+  ].filter(Boolean).join("::") || "work";
   const hash = hashString(seed);
-  const hue = hash % 360;
-  const hue2 = (hue + 28 + (hash % 36)) % 360;
-  const accentHue = (hue + 170 + (hash % 44)) % 360;
-  const templateIndex = hash % 12;
-  const colorA = `hsl(${hue} 72% 76%)`;
-  const colorB = `hsl(${hue2} 70% 84%)`;
-  const accent = `hsl(${accentHue} 76% 82% / 0.58)`;
-  const ink = `hsl(${hue} 42% 34% / 0.18)`;
+  const hue = hashString(`${seed}:hue`) % 360;
+  const hue2 = (hue + 34 + (hashString(`${seed}:hue-2`) % 92)) % 360;
+  const accentHue = (hue + 145 + (hashString(`${seed}:accent`) % 82)) % 360;
+  const templateIndex = hashString(`${seed}:template`) % GENERATED_COVER_TEMPLATE_COUNT;
+  const colorA = `hsl(${hue} 70% 72%)`;
+  const colorB = `hsl(${hue2} 72% 86%)`;
+  const accent = `hsl(${accentHue} 78% 80% / 0.62)`;
+  const ink = `hsl(${hue} 44% 30% / 0.2)`;
 
   return {
     style: {
-      background: `linear-gradient(135deg, ${colorA}, ${colorB})`
+      background: `linear-gradient(${118 + (hash % 54)}deg, ${colorA}, ${colorB})`
     },
     layers: getCoverTemplateLayers(templateIndex, { accent, ink })
   };
@@ -115,6 +127,8 @@ function getCoverTemplateLayers(templateIndex, colors) {
   const waveA = makeWaveSvg(colors.accent, "rgba(255,255,255,0.42)", colors.ink, "M0 64 C80 34 132 92 220 54 C310 16 378 42 480 10 L480 180 L0 180 Z");
   const waveB = makeWaveSvg("rgba(255,255,255,0.5)", colors.accent, colors.ink, "M0 36 C78 88 148 2 230 46 C310 88 374 22 480 58 L480 180 L0 180 Z");
   const waveC = makeWaveSvg(colors.ink, "rgba(255,255,255,0.44)", colors.accent, "M0 92 C96 48 150 126 246 80 C324 42 394 78 480 34 L480 180 L0 180 Z");
+  const waveD = makeWaveSvg(colors.accent, colors.ink, "rgba(255,255,255,0.4)", "M0 20 C74 72 142 18 226 68 C314 120 386 42 480 86 L480 180 L0 180 Z");
+  const waveE = makeWaveSvg("rgba(255,255,255,0.48)", colors.ink, colors.accent, "M0 112 C88 70 150 128 232 96 C320 62 386 110 480 74 L480 180 L0 180 Z");
   const templates = [
     [
       { className: `${base} opacity-70`, style: { background: "linear-gradient(128deg, transparent 0 15%, rgba(255,255,255,0.42) 15% 28%, transparent 28% 100%)" } },
@@ -163,6 +177,106 @@ function getCoverTemplateLayers(templateIndex, colors) {
     [
       { className: `${base} opacity-60`, style: { background: `linear-gradient(35deg, transparent 0 26%, rgba(255,255,255,0.48) 26% 34%, transparent 34% 100%), linear-gradient(145deg, transparent 0 64%, ${colors.ink} 64% 82%, transparent 82% 100%)` } },
       { className: `${base} opacity-45`, style: { background: colors.accent, clipPath: "polygon(0 58%, 42% 76%, 20% 100%, 0 100%)" } }
+    ],
+    [
+      { className: `${base} opacity-58`, style: { background: `radial-gradient(circle at 78% 20%, rgba(255,255,255,0.5) 0 14%, transparent 15%), radial-gradient(circle at 18% 74%, ${colors.ink} 0 18%, transparent 19%)` } },
+      { className: `${base} opacity-46`, style: { background: colors.accent, clipPath: "polygon(42% 0, 100% 0, 100% 24%, 58% 42%)" } }
+    ],
+    [
+      { className: `${base} opacity-54`, style: { background: `linear-gradient(90deg, transparent 0 16%, rgba(255,255,255,0.36) 16% 26%, transparent 26% 44%, ${colors.ink} 44% 52%, transparent 52% 100%)` } },
+      { className: `${base} opacity-52`, style: { background: colors.accent, clipPath: "polygon(0 24%, 38% 0, 64% 0, 18% 68%, 0 82%)" } }
+    ],
+    [
+      { className: `${base} opacity-64`, style: { backgroundImage: `url("${waveD}")`, backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundSize: "cover" } },
+      { className: `${base} opacity-32`, style: { background: "linear-gradient(45deg, rgba(255,255,255,0.52) 0 10%, transparent 10% 100%)", clipPath: "polygon(0 0, 44% 0, 0 100%)" } }
+    ],
+    [
+      { className: `${base} opacity-50`, style: { background: `repeating-linear-gradient(135deg, transparent 0 18px, rgba(255,255,255,0.28) 18px 26px), linear-gradient(90deg, transparent 0 70%, ${colors.ink} 70% 78%, transparent 78%)` } },
+      { className: `${base} opacity-44`, style: { background: colors.accent, clipPath: "polygon(62% 18%, 100% 0, 100% 100%, 82% 100%)" } }
+    ],
+    [
+      { className: `${base} opacity-58`, style: { background: `linear-gradient(160deg, ${colors.ink} 0 18%, transparent 18% 100%)`, clipPath: "polygon(0 0, 100% 0, 78% 100%, 0 100%)" } },
+      { className: `${base} ${soft} opacity-62`, style: { background: "radial-gradient(circle at 72% 54%, rgba(255,255,255,0.54) 0 24%, transparent 25%)" } }
+    ],
+    [
+      { className: `${base} opacity-60`, style: { background: "linear-gradient(24deg, transparent 0 55%, rgba(255,255,255,0.4) 55% 64%, transparent 64%)" } },
+      { className: `${base} opacity-48`, style: { background: colors.accent, clipPath: "polygon(0 0, 100% 0, 68% 34%, 0 18%)" } }
+    ],
+    [
+      { className: `${base} opacity-58`, style: { background: `radial-gradient(ellipse at 82% 76%, ${colors.accent} 0 24%, transparent 25%), radial-gradient(ellipse at 22% 18%, rgba(255,255,255,0.48) 0 18%, transparent 19%)` } },
+      { className: `${base} opacity-28`, style: { background: colors.ink, clipPath: "polygon(28% 0, 44% 0, 18% 100%, 2% 100%)" } }
+    ],
+    [
+      { className: `${base} opacity-62`, style: { backgroundImage: `url("${waveE}")`, backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundSize: "cover" } },
+      { className: `${base} opacity-36`, style: { background: "linear-gradient(100deg, transparent 0 66%, rgba(255,255,255,0.58) 66% 78%, transparent 78%)" } }
+    ],
+    [
+      { className: `${base} opacity-54`, style: { background: `linear-gradient(90deg, transparent 0 48%, ${colors.ink} 48% 56%, transparent 56%), linear-gradient(0deg, rgba(255,255,255,0.38) 0 22%, transparent 22%)` } },
+      { className: `${base} opacity-46`, style: { background: colors.accent, clipPath: "polygon(72% 0, 100% 0, 100% 44%, 54% 18%)" } }
+    ],
+    [
+      { className: `${base} opacity-50`, style: { background: "linear-gradient(135deg, rgba(255,255,255,0.44) 0 20%, transparent 20% 42%, rgba(255,255,255,0.26) 42% 52%, transparent 52%)" } },
+      { className: `${base} opacity-48`, style: { background: colors.ink, clipPath: "polygon(0 48%, 34% 68%, 0 100%)" } }
+    ],
+    [
+      { className: `${base} opacity-62`, style: { background: `linear-gradient(125deg, transparent 0 16%, ${colors.accent} 16% 28%, transparent 28% 100%)` } },
+      { className: `${base} opacity-32`, style: { background: "radial-gradient(circle at 84% 38%, rgba(255,255,255,0.62) 0 16%, transparent 17%)" } }
+    ],
+    [
+      { className: `${base} opacity-56`, style: { background: `linear-gradient(70deg, transparent 0 54%, ${colors.ink} 54% 66%, transparent 66%), linear-gradient(150deg, rgba(255,255,255,0.42) 0 12%, transparent 12%)` } },
+      { className: `${base} opacity-46`, style: { background: colors.accent, clipPath: "polygon(38% 72%, 100% 48%, 100% 100%, 26% 100%)" } }
+    ],
+    [
+      { className: `${base} opacity-52`, style: { background: "radial-gradient(circle at 18% 20%, rgba(255,255,255,0.46) 0 18%, transparent 19%), radial-gradient(circle at 90% 72%, rgba(255,255,255,0.32) 0 20%, transparent 21%)" } },
+      { className: `${base} opacity-46`, style: { background: colors.ink, clipPath: "polygon(50% 0, 64% 0, 34% 100%, 18% 100%)" } }
+    ],
+    [
+      { className: `${base} opacity-58`, style: { background: `linear-gradient(180deg, transparent 0 38%, ${colors.accent} 38% 54%, transparent 54%)`, clipPath: "polygon(0 0, 100% 18%, 100% 100%, 0 82%)" } },
+      { className: `${base} opacity-30`, style: { background: "linear-gradient(100deg, rgba(255,255,255,0.5) 0 8%, transparent 8% 100%)" } }
+    ],
+    [
+      { className: `${base} opacity-58`, style: { background: `repeating-linear-gradient(90deg, transparent 0 34px, rgba(255,255,255,0.28) 34px 42px), radial-gradient(circle at 74% 28%, ${colors.ink} 0 14%, transparent 15%)` } },
+      { className: `${base} opacity-40`, style: { background: colors.accent, clipPath: "polygon(0 0, 26% 0, 54% 100%, 26% 100%)" } }
+    ],
+    [
+      { className: `${base} opacity-60`, style: { background: `linear-gradient(145deg, transparent 0 28%, rgba(255,255,255,0.44) 28% 40%, transparent 40%), linear-gradient(35deg, transparent 0 68%, ${colors.ink} 68% 76%, transparent 76%)` } },
+      { className: `${base} opacity-42`, style: { background: colors.accent, clipPath: "polygon(62% 0, 100% 22%, 100% 58%, 78% 44%)" } }
+    ],
+    [
+      { className: `${base} opacity-56`, style: { background: "linear-gradient(105deg, rgba(255,255,255,0.42) 0 12%, transparent 12% 34%, rgba(255,255,255,0.28) 34% 42%, transparent 42%)" } },
+      { className: `${base} opacity-50`, style: { background: colors.ink, clipPath: "polygon(0 74%, 48% 56%, 70% 100%, 0 100%)" } }
+    ],
+    [
+      { className: `${base} opacity-62`, style: { backgroundImage: `url("${waveA}")`, backgroundPosition: "center 30%", backgroundRepeat: "no-repeat", backgroundSize: "125% 115%", transform: "scaleX(-1)" } },
+      { className: `${base} opacity-36`, style: { background: colors.accent, clipPath: "polygon(0 0, 20% 0, 0 46%)" } }
+    ],
+    [
+      { className: `${base} opacity-54`, style: { background: `linear-gradient(90deg, ${colors.accent} 0 20%, transparent 20% 100%)`, clipPath: "polygon(0 0, 62% 0, 38% 100%, 0 100%)" } },
+      { className: `${base} ${soft} opacity-70`, style: { background: "linear-gradient(140deg, transparent 0 64%, rgba(255,255,255,0.5) 64% 74%, transparent 74%)" } }
+    ],
+    [
+      { className: `${base} opacity-52`, style: { background: `radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.5) 0 24%, transparent 25%), linear-gradient(120deg, transparent 0 58%, ${colors.ink} 58% 66%, transparent 66%)` } },
+      { className: `${base} opacity-44`, style: { background: colors.accent, clipPath: "polygon(76% 62%, 100% 40%, 100% 100%, 48% 100%)" } }
+    ],
+    [
+      { className: `${base} opacity-58`, style: { background: "linear-gradient(0deg, transparent 0 54%, rgba(255,255,255,0.42) 54% 66%, transparent 66%)", clipPath: "polygon(0 0, 100% 16%, 100% 100%, 0 84%)" } },
+      { className: `${base} opacity-44`, style: { background: colors.ink, clipPath: "polygon(0 0, 36% 0, 0 34%)" } }
+    ],
+    [
+      { className: `${base} opacity-62`, style: { background: `linear-gradient(32deg, transparent 0 24%, ${colors.accent} 24% 36%, transparent 36%), linear-gradient(148deg, transparent 0 72%, rgba(255,255,255,0.42) 72% 82%, transparent 82%)` } },
+      { className: `${base} opacity-34`, style: { background: colors.ink, clipPath: "polygon(82% 0, 100% 0, 100% 100%, 94% 100%)" } }
+    ],
+    [
+      { className: `${base} opacity-54`, style: { background: "radial-gradient(circle at 20% 82%, rgba(255,255,255,0.48) 0 18%, transparent 19%), linear-gradient(90deg, transparent 0 78%, rgba(255,255,255,0.3) 78% 88%, transparent 88%)" } },
+      { className: `${base} opacity-46`, style: { background: colors.accent, clipPath: "polygon(0 18%, 28% 34%, 16% 100%, 0 100%)" } }
+    ],
+    [
+      { className: `${base} opacity-62`, style: { backgroundImage: `url("${waveB}")`, backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundSize: "120% 130%", transform: "scaleY(-1)" } },
+      { className: `${base} opacity-34`, style: { background: "linear-gradient(90deg, rgba(255,255,255,0.44) 0 12%, transparent 12%)" } }
+    ],
+    [
+      { className: `${base} opacity-56`, style: { background: `linear-gradient(115deg, transparent 0 30%, ${colors.ink} 30% 44%, transparent 44%), linear-gradient(65deg, transparent 0 58%, rgba(255,255,255,0.44) 58% 70%, transparent 70%)` } },
+      { className: `${base} opacity-46`, style: { background: colors.accent, clipPath: "polygon(54% 0, 78% 0, 100% 100%, 72% 100%)" } }
     ]
   ];
 
