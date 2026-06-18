@@ -2,7 +2,7 @@
 
 import { useLocale, useTranslations } from "next-intl";
 
-import { getActiveLocale } from "@/i18n/publicLocale.js";
+import { getActiveLocale, withActiveLocalePath } from "@/i18n/publicLocale.js";
 import Section from "@/components/sections/Section.jsx";
 import SectionTitle from "@/components/sections/SectionTitle.jsx";
 
@@ -30,7 +30,7 @@ export function WorkCard({ work }) {
     .slice(0, 4);
   const context = [work.company?.name, work.project?.name].filter(Boolean).join(" / ");
   const generatedCover = getGeneratedCover(work);
-  const href = work.publishedUrl || work.proofUrl || `/${locale}/portfolio/${work.slug}`;
+  const href = work.publishedUrl || work.proofUrl || withActiveLocalePath(`/portfolio/${work.slug}`, locale);
 
   return (
     <a href={href} target={href.startsWith("http") ? "_blank" : undefined} rel={href.startsWith("http") ? "noreferrer" : undefined} className="group flex h-full flex-col overflow-hidden rounded-[24px] border border-border bg-card transition duration-300 hover:-translate-y-1 hover:shadow-lg">

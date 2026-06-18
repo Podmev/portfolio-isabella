@@ -5,7 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 import Footer from "@/components/Footer.jsx";
 import Section from "@/components/sections/Section.jsx";
 import { WorkCard } from "@/components/sections/WorksSection.jsx";
-import { getActiveLocale } from "@/i18n/publicLocale.js";
+import { getActiveLocale, withActiveLocalePath } from "@/i18n/publicLocale.js";
 
 function getNiches(portfolio) {
   return portfolio?.niches || portfolio?.tags?.niches || [];
@@ -50,14 +50,14 @@ export default function PortfolioNichePage({ portfolio, searchParams = {} }) {
           ) : null}
           <div className="mt-7 flex flex-wrap justify-center gap-2">
             <a
-              href={`/${locale}`}
+              href={withActiveLocalePath("/", locale)}
               className="rounded-full border border-border bg-card px-4 py-2 text-sm text-muted-foreground transition hover:bg-secondary"
             >
               {t("portfolioPageBack")}
             </a>
             {activeSlug ? (
               <a
-                href={`/${locale}/portfolio`}
+                href={withActiveLocalePath("/portfolio", locale)}
                 className="rounded-full border border-border bg-card px-4 py-2 text-sm text-muted-foreground transition hover:bg-secondary"
               >
                 {t("portfolioPageAllWorks")}
@@ -75,7 +75,7 @@ export default function PortfolioNichePage({ portfolio, searchParams = {} }) {
               return (
                 <a
                   key={niche.slug}
-                  href={`/${locale}/portfolio?niche=${encodeURIComponent(niche.slug)}`}
+                  href={withActiveLocalePath(`/portfolio?industry=${encodeURIComponent(niche.slug)}`, locale)}
                   className={`rounded-full border px-4 py-2 text-sm transition ${
                     isActive
                       ? "border-primary bg-primary text-primary-foreground"

@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { ArrowUpRight, ChevronLeft, ChevronRight, Hash } from "lucide-react";
 
-import { getActiveLocale } from "@/i18n/publicLocale.js";
+import { getActiveLocale, withActiveLocalePath } from "@/i18n/publicLocale.js";
 import { getNicheVisualSrc } from "@/lib/tags/nicheVisuals";
 
 export default function NichesCarousel({ niches = [] }) {
@@ -73,7 +73,7 @@ export default function NichesCarousel({ niches = [] }) {
 
         <div className="flex justify-center sm:justify-end">
           <a
-            href={`/${locale}/portfolio`}
+            href={withActiveLocalePath("/portfolio", locale)}
             className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2.5 text-sm font-medium text-foreground shadow-sm transition hover:-translate-y-0.5 hover:bg-secondary"
           >
             {labels.seeAll || labels.works}
@@ -103,7 +103,7 @@ export default function NichesCarousel({ niches = [] }) {
             <a
               key={niche.id || niche.slug}
               data-niche-card
-              href={`/${locale}/portfolio?niche=${encodeURIComponent(niche.slug)}`}
+              href={withActiveLocalePath(`/portfolio?industry=${encodeURIComponent(niche.slug)}`, locale)}
               className="group relative aspect-[1.08/1] w-[11.25rem] shrink-0 overflow-hidden rounded-[26px] border border-white/45 bg-[var(--writer-surface-soft)] shadow-[0_12px_34px_rgba(15,23,42,0.12)] ring-1 ring-black/5 transition duration-300 hover:-translate-y-1 hover:shadow-[0_22px_54px_rgba(15,23,42,0.18)] sm:w-[13.25rem]"
               draggable={false}
             >
