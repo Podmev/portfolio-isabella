@@ -26,8 +26,10 @@ export default function NichesCarousel({ niches = [] }) {
     active: false,
     pointerId: null,
     startX: 0,
+    startY: 0,
     startScrollLeft: 0,
     moved: false,
+    pointerCaptured: false,
   });
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
@@ -76,10 +78,11 @@ export default function NichesCarousel({ niches = [] }) {
       active: true,
       pointerId: event.pointerId,
       startX: event.clientX,
+      startY: event.clientY,
       startScrollLeft: element.scrollLeft,
       moved: false,
+      pointerCaptured: false,
     };
-    element.setPointerCapture?.(event.pointerId);
   }
 
   function handlePointerMove(event) {
@@ -88,12 +91,20 @@ export default function NichesCarousel({ niches = [] }) {
     if (!state.active || !element) return;
 
     const deltaX = event.clientX - state.startX;
-    if (Math.abs(deltaX) > 4) {
+    const deltaY = event.clientY - state.startY;
+    const isHorizontalDrag = Math.abs(deltaX) > 10 && Math.abs(deltaX) > Math.abs(deltaY);
+
+    if (!state.moved && isHorizontalDrag) {
       state.moved = true;
       setIsDragging(true);
-      event.preventDefault();
+      element.setPointerCapture?.(event.pointerId);
+      state.pointerCaptured = true;
     }
-    element.scrollLeft = state.startScrollLeft - deltaX;
+
+    if (state.moved) {
+      event.preventDefault();
+      element.scrollLeft = state.startScrollLeft - deltaX;
+    }
   }
 
   function stopDragging(event) {
@@ -101,13 +112,17 @@ export default function NichesCarousel({ niches = [] }) {
     const element = carouselRef.current;
     if (!state.active) return;
 
-    element?.releasePointerCapture?.(state.pointerId || event.pointerId);
+    if (state.pointerCaptured) {
+      element?.releasePointerCapture?.(state.pointerId || event.pointerId);
+    }
     dragStateRef.current = {
       active: false,
       pointerId: null,
       startX: 0,
+      startY: 0,
       startScrollLeft: 0,
       moved: state.moved,
+      pointerCaptured: false,
     };
 
     if (state.moved) {
