@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { Dancing_Script, Forum } from "next/font/google";
+import { Globe2 } from "lucide-react";
 
 import Section from "@/components/sections/Section.jsx";
 import PortfolioPortrait from "@/components/sections/PortfolioPortrait.jsx";
@@ -66,6 +67,15 @@ export default function Hero({ portfolio }) {
             {bio}
           </p>
 
+          {workLocation ? (
+            <div className="inline-flex w-fit max-w-full items-center gap-2 rounded-full border border-border bg-card/70 px-3.5 py-2 text-sm text-foreground shadow-sm">
+              <Globe2 className="h-4 w-4 shrink-0 text-muted-foreground" />
+              <span className="shrink-0 text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">{t("heroWorkLocation")}</span>
+              <span className="h-1 w-1 shrink-0 rounded-full bg-muted-foreground/45" />
+              <span className="min-w-0 truncate font-medium">{workLocation}</span>
+            </div>
+          ) : null}
+
           <div className="grid gap-3 text-center sm:grid-cols-3 sm:text-left">
             <div className="rounded-[18px] border border-border bg-card/70 px-4 py-3">
               <p className="text-2xl font-semibold">{worksCount}</p>
@@ -79,13 +89,6 @@ export default function Hero({ portfolio }) {
               <p className="text-2xl font-semibold">{languageCount}</p>
               <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">{t("heroLanguages", { count: languageCount })}</p>
             </div>
-
-            {workLocation ? (
-              <div className="rounded-[18px] border border-border bg-card/70 px-4 py-3 sm:col-span-3">
-                <p className="text-sm font-semibold">{workLocation}</p>
-                <p className="mt-1 text-xs uppercase tracking-[0.16em] text-muted-foreground">{t("heroWorkLocation")}</p>
-              </div>
-            ) : null}
           </div>
 
           <div className="flex gap-5 md:pt-1">
