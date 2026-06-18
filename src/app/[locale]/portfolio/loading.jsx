@@ -29,12 +29,18 @@ export default function PortfolioLoading() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <section className="border-b border-border bg-surface-alt px-6 py-14 md:py-20">
-        <div className="mx-auto max-w-3xl text-center">
-          <SkeletonPill className="mx-auto h-3 w-28" />
-          <div className="mx-auto mt-4 h-12 w-full max-w-xl rounded-[28px] bg-muted md:h-16" />
-          <div className="mx-auto mt-7 inline-flex items-center gap-3 rounded-full border border-border bg-card px-4 py-2.5 text-sm font-medium text-muted-foreground shadow-sm">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-8 flex gap-3">
+            <SkeletonPill className="h-5 w-28" />
+            <SkeletonPill className="h-5 w-24" />
+          </div>
+          <div className="mx-auto max-w-3xl text-center">
+            <SkeletonPill className="mx-auto h-3 w-28" />
+            <div className="mx-auto mt-4 h-12 w-full max-w-xl rounded-[28px] bg-muted md:h-16" />
+            <div className="mx-auto mt-7 inline-flex items-center gap-3 rounded-full border border-border bg-card px-4 py-2.5 text-sm font-medium text-muted-foreground shadow-sm">
             <span className="h-4 w-4 animate-spin rounded-full border-2 border-muted border-t-foreground" />
             Loading works
+            </div>
           </div>
         </div>
       </section>

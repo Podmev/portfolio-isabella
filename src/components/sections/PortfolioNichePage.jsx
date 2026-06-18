@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
+import { ArrowLeft, LayoutGrid } from "lucide-react";
 
 import Footer from "@/components/Footer.jsx";
 import Section from "@/components/sections/Section.jsx";
@@ -41,6 +42,25 @@ export default function PortfolioNichePage({ portfolio, searchParams = {} }) {
   return (
     <>
       <Section className="border-b border-border bg-surface-alt" sectionClassName="py-14 md:py-20">
+        <div className="mb-8 flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
+          <Link
+            href={withActiveLocalePath("/", locale)}
+            className="inline-flex items-center gap-1.5 transition hover:text-foreground"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            {t("portfolioPageBack")}
+          </Link>
+          {activeSlug ? (
+            <Link
+              href={withActiveLocalePath("/portfolio", locale)}
+              className="inline-flex items-center gap-1.5 transition hover:text-foreground"
+            >
+              <LayoutGrid className="h-4 w-4" />
+              {t("portfolioPageAllWorks")}
+            </Link>
+          ) : null}
+        </div>
+
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-muted-foreground md:text-xs md:tracking-[0.28em]">
             {t("portfolioPageEyebrow")}
@@ -49,22 +69,6 @@ export default function PortfolioNichePage({ portfolio, searchParams = {} }) {
           {subtitle ? (
             <p className="mt-5 text-sm leading-6 text-muted-foreground md:text-base md:leading-7">{subtitle}</p>
           ) : null}
-          <div className="mt-7 flex flex-wrap justify-center gap-2">
-            <Link
-              href={withActiveLocalePath("/", locale)}
-              className="rounded-full border border-border bg-card px-4 py-2 text-sm text-muted-foreground transition hover:bg-secondary"
-            >
-              {t("portfolioPageBack")}
-            </Link>
-            {activeSlug ? (
-              <Link
-                href={withActiveLocalePath("/portfolio", locale)}
-                className="rounded-full border border-border bg-card px-4 py-2 text-sm text-muted-foreground transition hover:bg-secondary"
-              >
-                {t("portfolioPageAllWorks")}
-              </Link>
-            ) : null}
-          </div>
         </div>
       </Section>
 
